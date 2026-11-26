@@ -1,81 +1,89 @@
-<title>Chama Esmeralda Wiki</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Wiki do Pokémon Chama Esmeralda, ROM hack feita por fã: as duas rotas da história, onde achar cada Pokémon, lendários, itens e como instalar.">
+<meta name="theme-color" content="#191970">
+<title>Chama Esmeralda Wiki | Zart Jogos</title>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <style>
-/* Layout: wiki clássica — barra superior fixa, menu lateral agrupado, artigo com infobox; esmeralda + chama */
+/* Grupo Zart: azul meia-noite, azul-escuro e preto. Fontes do sistema (nada é baixado de terceiros).
+   Layout de wiki: cabeçalho fixo com a marca, menu lateral agrupado, artigo com ficha. */
 :root{
-  --bg:#eef3ef; --surface:#ffffff; --sunk:#e3ece6; --ink:#15211b; --muted:#566a5e; --line:#cfdcd3;
-  --emerald:#0b7a52; --emerald-ink:#ffffff; --emerald-soft:#d5ede2; --flame:#c94a1c; --flame-soft:#fbe3d8;
-  --rocket:#7a2b8f; --rocket-soft:#efdff3; --gold:#a6780c;
-  --display:"Pixelify Sans", "Courier New", monospace;
-  --body:"Source Sans 3", "Segoe UI", system-ui, sans-serif;
-  --r:6px;
+  --bg:#05060d; --surface:#0b1440; --sunk:#0f1a52; --ink:#eef0ff; --muted:#b4bbe0; --line:#2c3680;
+  --brand:#191970; --brand-2:#2a2aa8; --link:#a9b3ff; --navlink:#e3e6ff;
+  --emerald:#6fe0ad; --emerald-ink:#04140c; --emerald-soft:#0f2f3a;
+  --flame:#ff9e73; --flame-soft:#3a1f2a; --rocket:#e2a6f2; --rocket-soft:#2c1a45; --gold:#f0c45a;
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono","SF Mono",Consolas,monospace;
+  --r:10px; color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0d1511; --surface:#142019; --sunk:#1a2920; --ink:#e2ebe5; --muted:#93a99c; --line:#2a3c31;
-  --emerald:#35c48a; --emerald-ink:#06140d; --emerald-soft:#173527; --flame:#ff7b45; --flame-soft:#3a2117;
-  --rocket:#d18be3; --rocket-soft:#2f1c35; --gold:#e3b23c; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0d1511; --surface:#142019; --sunk:#1a2920; --ink:#e2ebe5; --muted:#93a99c; --line:#2a3c31;
-  --emerald:#35c48a; --emerald-ink:#06140d; --emerald-soft:#173527; --flame:#ff7b45; --flame-soft:#3a2117;
-  --rocket:#d18be3; --rocket-soft:#2f1c35; --gold:#e3b23c; color-scheme:dark}
-
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font:17px/1.6 var(--body);margin:0}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--emerald)}
-a{color:var(--emerald);text-underline-offset:2px}
-a:hover{color:var(--flame)}
-:focus-visible{outline:3px solid var(--flame);outline-offset:2px}
-h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.2;text-wrap:balance;margin:0}
+html{scroll-padding-top:80px}
+body{margin:0;background:radial-gradient(1200px 600px at 50% -10%,rgba(25,25,112,.55),transparent 70%),var(--bg);background-color:var(--bg);color:var(--ink);font:17px/1.6 var(--font)}
+a{color:var(--link);text-underline-offset:3px}
+a:hover{color:var(--ink)}
+:focus-visible{outline:3px solid var(--link);outline-offset:3px;border-radius:4px}
+[tabindex="-1"]:focus{outline:none}
+h1,h2,h3{font-weight:800;line-height:1.2;letter-spacing:-.01em;text-wrap:balance;margin:0}
 h1{font-size:2rem}
-h2{font-size:1.35rem;margin-top:2rem;padding-bottom:.3rem;border-bottom:2px solid var(--line)}
+h2{font-size:1.35rem;margin-top:2rem;padding-bottom:.3rem;border-bottom:1px solid var(--line)}
 h3{font-size:1.08rem;margin-top:1.4rem}
 p,ul,ol{margin:.7rem 0}
 li{margin:.25rem 0}
-code,kbd{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:.88em;background:var(--sunk);padding:.08em .35em;border-radius:4px}
+code,kbd{font-family:var(--mono);font-size:.88em;background:var(--sunk);padding:.08em .35em;border-radius:5px}
+img{max-width:100%}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.pular{position:absolute;left:1rem;top:-100px;z-index:100;padding:.7rem 1rem;border-radius:var(--r);background:var(--ink);color:var(--bg);font-weight:700}
+.pular:focus{top:1rem;color:var(--bg)}
 
-/* barra superior */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--emerald);color:var(--emerald-ink)}
-.top-in{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-width:1280px;margin:0 auto}
-.brand{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;font-family:var(--display);font-size:1.15rem;font-weight:700;white-space:nowrap}
-.brand:hover{color:inherit}
-.gem{width:26px;height:26px;flex:none}
-.topnav{display:flex;gap:4px;flex-wrap:wrap}
-.topnav a{color:inherit;text-decoration:none;font-weight:600;font-size:.95rem;padding:4px 10px;border-radius:4px}
-.topnav a:hover,.topnav a[aria-current="page"]{background:rgba(0,0,0,.16);color:inherit}
+/* cabeçalho */
+.top{position:sticky;top:0;z-index:20;background:var(--brand);border-bottom:1px solid var(--line)}
+.top-in{display:flex;align-items:center;gap:14px;flex-wrap:wrap;max-width:1280px;margin:0 auto;padding-block:8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.marca{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;white-space:nowrap}
+.marca:hover{color:#fff}
+.marca img{height:40px;width:auto;display:block}
+.marca .area{padding-left:10px;border-left:1px solid rgba(255,255,255,.35);font-weight:700;color:var(--navlink)}
+.produto{color:#fff;font-weight:800;text-decoration:none;font-size:1.05rem;white-space:nowrap}
+.produto:hover{color:#fff;text-decoration:underline}
+.topnav{display:flex;gap:2px;flex-wrap:wrap}
+.topnav a{color:var(--navlink);text-decoration:none;font-weight:600;font-size:.95rem;padding:5px 10px;border-radius:8px}
+.topnav a:hover,.topnav a[aria-current="page"]{background:rgba(0,0,0,.28);color:#fff}
 .search{position:relative;margin-left:auto;flex:1 1 220px;max-width:340px}
-.search input{width:100%;font:inherit;font-size:.95rem;padding:7px 12px;border-radius:4px;border:0;background:var(--surface);color:var(--ink)}
-.results{position:absolute;left:0;right:0;top:calc(100% + 4px);background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 8px 24px rgba(0,0,0,.18);list-style:none;margin:0;padding:4px;max-height:60vh;overflow:auto}
-.results a{display:block;padding:7px 10px;border-radius:4px;color:var(--ink);text-decoration:none}
-.results a:hover,.results a.sel{background:var(--emerald-soft)}
+.search input{width:100%;font:inherit;font-size:.95rem;padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.search input::placeholder{color:var(--muted)}
+.results{position:absolute;left:0;right:0;top:calc(100% + 4px);background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 12px 32px rgba(0,0,0,.55);list-style:none;margin:0;padding:4px;max-height:60vh;overflow:auto}
+.results a{display:block;padding:7px 10px;border-radius:6px;color:var(--ink);text-decoration:none}
+.results a:hover,.results a.sel{background:var(--sunk)}
 .results small{display:block;color:var(--muted)}
-.themebtn{background:rgba(0,0,0,.16);color:inherit;border:0;border-radius:4px;font:600 .9rem var(--body);padding:6px 10px;cursor:pointer}
 
 /* corpo */
-.wrap{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;max-width:1280px;margin:0 auto;padding-block:24px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;max-width:1280px;margin:0 auto;padding-block:24px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .side{font-size:.95rem}
 .side details{margin-bottom:14px}
-.side summary{font-family:var(--display);font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-size:.8rem;cursor:pointer;list-style:none;padding:4px 0}
-.side summary::-webkit-details-marker{display:none}
+.side summary{font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-size:.8rem;cursor:pointer;padding:4px 0}
 .side ul{list-style:none;margin:4px 0 0;padding:0}
-.side a{display:block;padding:4px 10px;border-left:3px solid transparent;color:var(--ink);text-decoration:none}
+.side a{display:block;padding:4px 10px;border-left:3px solid transparent;color:var(--ink);text-decoration:none;border-radius:0 6px 6px 0}
 .side a:hover{background:var(--sunk);color:var(--ink)}
-.side a[aria-current="page"]{border-left-color:var(--flame);background:var(--surface);font-weight:700}
+.side a[aria-current="page"]{border-left-color:var(--link);background:var(--surface);font-weight:700}
 .side .beta{margin-top:18px;padding:10px 12px;border:1px dashed var(--flame);border-radius:var(--r);background:var(--flame-soft);font-size:.88rem}
+.continuar{margin:0 0 16px;padding:10px 14px;border:1px solid var(--line);border-radius:var(--r);background:var(--sunk)}
 
 article{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px clamp(16px,3vw,36px) 34px;min-width:0}
 .crumb{font-size:.85rem;color:var(--muted);margin-bottom:6px}
 .lede{font-size:1.08rem;color:var(--muted);max-width:68ch}
 .prose{max-width:72ch}
+[data-page="faq"] .prose h2{font-size:1.08rem;border:0;padding:0;margin-top:1.4rem}
+.atualizado{color:var(--muted);font-size:.9rem;margin-top:.3rem}
 .page[hidden]{display:none}
 
 /* página principal */
 .welcome{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:start}
 .welcome h1 span{color:var(--flame)}
 .infobox{border:1px solid var(--line);border-radius:var(--r);background:var(--sunk);font-size:.92rem;overflow:hidden}
-.infobox .cap{background:var(--emerald);color:var(--emerald-ink);font-family:var(--display);font-weight:700;text-align:center;padding:6px}
+.infobox .cap{background:var(--brand);color:#fff;font-weight:800;text-align:center;padding:6px}
 .infobox img{display:block;width:100%;image-rendering:pixelated}
 .infobox dl{margin:0;padding:8px 12px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
 .infobox dt{font-weight:700;color:var(--muted)}
@@ -83,26 +91,26 @@ article{background:var(--surface);border:1px solid var(--line);border-radius:var
 .group{margin-top:26px}
 .group h2{border:0;margin:0 0 10px;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
-.tile{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 8px 12px;min-width:0;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--ink);text-decoration:none;text-align:center;font-weight:600;transition:transform .12s,border-color .12s}
-.tile:hover{border-color:var(--emerald);transform:translateY(-2px);color:var(--ink)}
-.tile svg{width:40px;height:40px;image-rendering:pixelated}
+.tile{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 8px 12px;min-width:0;border:1px solid var(--line);border-radius:var(--r);background:var(--sunk);color:var(--ink);text-decoration:none;text-align:center;font-weight:700;transition:transform .12s,border-color .12s}
+.tile:hover{border-color:var(--link);transform:translateY(-2px);color:var(--ink)}
+.tile svg{width:40px;height:40px}
 .tile small{font-weight:400;color:var(--muted);font-size:.8rem;line-height:1.3}
-
 .news{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:26px}
-.box{border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;background:var(--surface)}
+.box{border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;background:var(--sunk)}
 .box h3{margin:0 0 6px;font-size:1rem}
 .box.hot{border-color:var(--flame);background:var(--flame-soft)}
-.discord{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 22px;padding:12px 16px;border-radius:var(--r);background:#5865f2;color:#fff}
-.discord p{margin:0;flex:1 1 240px;min-width:0}
-.discord a.btn{background:#fff;color:#3c45c7;font-weight:700;text-decoration:none;padding:7px 14px;border-radius:4px;white-space:nowrap}
-.discord a.btn:hover{color:#3c45c7;background:#e8eaff}
-.ext::after{content:" \2197";font-size:.8em}
 .box ul{padding-left:1.1rem;margin:.4rem 0}
+.discord{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 22px;padding:12px 16px;border-radius:var(--r);background:#4752c4;color:#fff}
+.discord p{margin:0;flex:1 1 240px;min-width:0}
+.discord a.btn{background:#fff;color:#2a318f;font-weight:700;text-decoration:none;padding:7px 14px;border-radius:8px;white-space:nowrap}
+.discord a.btn:hover{background:#e8eaff;color:#2a318f}
+.discord a.btn:focus-visible{outline-color:#fff}
+.ext::after{content:" \2197";font-size:.8em}
 
-/* elementos de artigo */
+/* artigos */
 .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:14px 0}
 figure{margin:0}
-figure img{display:block;width:100%;max-width:100%;image-rendering:pixelated;border-radius:4px;border:1px solid var(--line)}
+figure img{display:block;width:100%;max-width:100%;image-rendering:pixelated;border-radius:6px;border:1px solid var(--line)}
 figcaption{font-size:.85rem;color:var(--muted);margin-top:4px}
 .float{float:right;width:min(300px,45%);margin:0 0 12px 18px}
 .tblwrap{overflow-x:auto;margin:12px 0;border:1px solid var(--line);border-radius:var(--r)}
@@ -111,7 +119,7 @@ th,td{text-align:left;padding:7px 12px;border-bottom:1px solid var(--line);verti
 th{background:var(--sunk);font-weight:700;white-space:nowrap}
 tr:last-child td{border-bottom:0}
 td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
-.tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1px 7px;border-radius:3px;white-space:nowrap}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1px 7px;border-radius:4px;white-space:nowrap}
 .tag.k{background:var(--emerald-soft);color:var(--emerald)}
 .tag.h{background:var(--flame-soft);color:var(--flame)}
 .tag.r{background:var(--rocket-soft);color:var(--rocket)}
@@ -119,26 +127,50 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 .note.warn{border-color:var(--flame);background:var(--flame-soft)}
 .note.rkt{border-color:var(--rocket);background:var(--rocket-soft)}
 .split{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:14px 0}
-.route{border:1px solid var(--line);border-top:5px solid var(--emerald);border-radius:var(--r);padding:14px 16px}
+.route{border:1px solid var(--line);border-top:5px solid var(--emerald);border-radius:var(--r);padding:14px 16px;background:var(--sunk)}
 .route.rk{border-top-color:var(--rocket)}
 .route h3{margin-top:0}
 .steps{counter-reset:s;list-style:none;padding:0}
 .steps li{counter-increment:s;position:relative;padding-left:2.4rem;margin:.7rem 0}
-.steps li::before{content:counter(s);position:absolute;left:0;top:.05rem;width:1.7rem;height:1.7rem;border-radius:4px;background:var(--emerald);color:var(--emerald-ink);font:700 .9rem/1.7rem var(--display);text-align:center}
-.filter{font:inherit;width:100%;max-width:360px;padding:8px 12px;border:1px solid var(--line);border-radius:4px;background:var(--surface);color:var(--ink)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:.05rem;width:1.7rem;height:1.7rem;border-radius:6px;background:var(--emerald);color:var(--emerald-ink);font:800 .9rem/1.7rem var(--font);text-align:center}
+.filtro{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.filtro label{font-weight:700}
+.filter{font:inherit;width:100%;max-width:360px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.filter::placeholder{color:var(--muted)}
 .chars{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:12px}
-.char{border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
-.char h3{margin:0 0 2px;font-size:1rem}
+.char{border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;background:var(--sunk)}
+.char h2{margin:0 0 2px;font-size:1rem;border:0;padding:0}
 .char .role{font-size:.82rem;color:var(--muted);margin-bottom:6px}
 .ver{border-left:3px solid var(--line);padding:2px 0 2px 16px;margin:16px 0}
-.ver h3{margin:0;font-size:1rem}
-.ver h3 small{font-family:var(--body);font-weight:400;color:var(--muted);font-size:.85rem;margin-left:6px}
+.ver h2{margin:0;font-size:1rem;border:0;padding:0}
+.ver h2 small{font-weight:400;color:var(--muted);font-size:.85rem;margin-left:6px}
 .ver.cur{border-left-color:var(--flame)}
 .ver ul{margin:.3rem 0;padding-left:1.1rem}
-footer{max-width:1280px;margin:0 auto;padding-block:0 32px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));font-size:.85rem;color:var(--muted)}
-footer p{margin:.3rem 0}
-.copybtn{font:600 .85rem var(--body);border:1px solid var(--line);background:var(--sunk);color:var(--ink);border-radius:4px;padding:3px 9px;cursor:pointer}
+.copybtn,.botao{font:700 .9rem var(--font);border:1px solid var(--line);background:var(--brand);color:#fff;border-radius:8px;padding:7px 14px;cursor:pointer;min-height:40px}
+.copybtn:hover,.botao:hover{background:var(--brand-2)}
+.botao--sec{background:transparent;color:var(--ink)}
+.botao--sec:hover{background:var(--sunk)}
+.botao--perigo{background:#7a1f2b;border-color:#a33}
+.botao--perigo:hover{background:#94263a}
+.botoes{display:flex;flex-wrap:wrap;gap:10px;margin:.8rem 0}
 .clear{clear:both}
+
+/* rodapé */
+.rodape{border-top:1px solid var(--line);background:#000}
+.rodape-in{max-width:1280px;margin:0 auto;padding-block:26px 34px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:24px;font-size:.9rem;color:var(--muted)}
+.rodape h2{font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);border:0;margin:0 0 8px;padding:0}
+.rodape ul{list-style:none;padding:0;margin:0}
+.rodape li{margin:.3rem 0}
+.rodape img{height:34px;width:auto;display:block;margin-bottom:8px}
+.rodape p{margin:.35rem 0}
+.rodape .linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--link);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.rodape .linkbtn:hover{color:var(--ink)}
+.rodape .base{grid-column:1/-1;border-top:1px solid var(--line);padding-top:14px}
+
+/* aviso de cookies */
+.aviso-cookies{position:fixed;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;max-width:560px;margin-left:auto;background:var(--surface);color:var(--ink);border:1px solid var(--link);border-radius:var(--r);box-shadow:0 16px 40px rgba(0,0,0,.6);padding:16px 18px}
+.aviso-cookies h2{font-size:1.05rem;border:0;margin:0 0 6px;padding:0}
+.aviso-cookies p{margin:0 0 10px;font-size:.93rem}
 
 @media (max-width:860px){
   .wrap{grid-template-columns:minmax(0,1fr)}
@@ -148,33 +180,41 @@ footer p{margin:.3rem 0}
   .search{max-width:none;flex-basis:100%;order:3}
   .top{position:static}
   .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .rodape-in{grid-template-columns:minmax(0,1fr)}
 }
 @media (min-width:861px) and (max-width:1100px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (prefers-reduced-motion:reduce){.tile{transition:none}.tile:hover{transform:none}}
 </style>
+</head>
+<body>
+<a class="pular" href="#main">Pular para o conteúdo</a>
 
 <header class="top">
   <div class="top-in">
-    <a class="brand" href="#inicio">
-      Chama Esmeralda Wiki
+    <a class="marca" href="#inicio" aria-label="Zart Jogos, página principal da wiki">
+      <img src="assets/img/zart-logo.png" alt="ZART" width="83" height="40">
+      <span class="area">Jogos</span>
     </a>
+    <a class="produto" href="#inicio">Chama Esmeralda Wiki</a>
     <nav class="topnav" aria-label="Principal">
       <a href="#inicio">Início</a>
       <a href="#instalacao">Como jogar</a>
       <a href="#pokedex">Pokédex</a>
       <a href="#bugs">Bugs</a>
-      <a class="ext" href="https://discord.gg/AczKuCQSFj" target="_blank" rel="noopener">Discord</a>
+      <a class="ext" href="https://discord.gg/AczKuCQSFj" target="_blank" rel="noopener">Discord<span class="sr"> (abre em outra aba)</span></a>
     </nav>
-    <div class="search">
-      <input id="q" type="search" placeholder="Buscar na wiki…" aria-label="Buscar na wiki" autocomplete="off">
-      <ul class="results" id="res" hidden></ul>
+    <div class="search" role="search">
+      <label for="q" class="sr">Buscar na wiki</label>
+      <input id="q" type="search" placeholder="Buscar na wiki…" autocomplete="off" aria-controls="res" aria-describedby="qajuda">
+      <span id="qajuda" class="sr">Use as setas para escolher um resultado, Enter para abrir e Esc para fechar.</span>
+      <ul class="results" id="res" aria-label="Resultados da busca" hidden></ul>
+      <p id="qstatus" class="sr" role="status"></p>
     </div>
-    <button class="themebtn" id="theme" type="button" aria-label="Trocar entre tema claro e escuro"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" style="vertical-align:-2px;margin-right:4px"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg>Tema</button>
   </div>
 </header>
 
 <div class="wrap">
-  <aside class="side" aria-label="Navegação da wiki">
+  <nav class="side" aria-label="Navegação da wiki">
     <details open><summary>Começando</summary><ul>
       <li><a href="#inicio">Página principal</a></li>
       <li><a href="#instalacao">Instalação</a></li>
@@ -202,26 +242,35 @@ footer p{margin:.3rem 0}
       <li><a href="#novidades">Histórico de versões</a></li>
       <li><a href="#bugs">Reportar bugs</a></li>
       <li><a href="#regras">Regras da comunidade</a></li>
-      <li><a class="ext" href="https://discord.gg/AczKuCQSFj" target="_blank" rel="noopener">Servidor no Discord</a></li>
-      <li><a class="ext" href="https://linktr.ee/wasmorf" target="_blank" rel="noopener">Linktree do wasmorf</a></li>
+      <li><a class="ext" href="https://discord.gg/AczKuCQSFj" target="_blank" rel="noopener">Servidor no Discord<span class="sr"> (abre em outra aba)</span></a></li>
+      <li><a class="ext" href="https://linktr.ee/wasmorf" target="_blank" rel="noopener">Linktree do wasmorf<span class="sr"> (abre em outra aba)</span></a></li>
+    </ul></details>
+    <details><summary>Informações legais</summary><ul>
+      <li><a href="#privacidade">Política de Privacidade</a></li>
+      <li><a href="#termos">Termos de Uso</a></li>
+      <li><a href="#cookies">Cookies</a></li>
+      <li><a href="#reembolso">Política de Reembolso</a></li>
+      <li><a href="#meus-dados">Meus dados</a></li>
     </ul></details>
     <div class="beta"><strong>Versão BETA.</strong> O jogo ainda está em desenvolvimento. Algumas coisas podem mudar. <a href="#bugs">Achou um bug?</a></div>
-  </aside>
+  </nav>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
+  <p class="continuar" id="continuar" hidden></p>
+
 
 <!-- ======================================================= INÍCIO -->
 <article class="page" data-page="inicio" data-title="Página principal" data-k="inicio bem-vindo wiki chama esmeralda discord linktree">
-  <div class="discord"><p><strong>Entre na comunidade!</strong> Tire dúvidas, mande bugs, veja as novidades primeiro e converse com outros treinadores.</p><a class="btn" href="https://discord.gg/AczKuCQSFj" target="_blank" rel="noopener">Entrar no Discord</a></div>
+  <div class="discord"><p><strong>Entre na comunidade!</strong> Tire dúvidas, mande bugs, veja as novidades primeiro e converse com outros treinadores.</p><a class="btn ext" href="https://discord.gg/AczKuCQSFj" target="_blank" rel="noopener">Entrar no Discord<span class="sr"> (abre o Discord em outra aba)</span></a></div>
   <div class="welcome">
     <div>
-      <h1>Bem-vindo à Wiki do <span>Chama Esmeralda</span>!</h1>
+      <h1 tabindex="-1">Bem-vindo à Wiki do <span>Chama Esmeralda</span>!</h1>
       <p class="lede">Pokémon Chama Esmeralda é uma ROM hack de FireRed, feita por fã, que junta as histórias de Emerald e FireRed em Kanto. Aqui você encontra tudo sobre as duas rotas da história, onde achar cada Pokémon, os lendários, os itens novos e como instalar o jogo.</p>
       <p class="prose">A Equipe Magma e a Equipe Aqua chegaram a Kanto para despertar o Groudon e o Kyogre. Enquanto isso, a Equipe Rocket faz os próprios planos. Logo no começo, uma escolha decide de que lado você vai lutar: <a href="#heroi">herói</a> ou <a href="#vilao">vilão</a>.</p>
     </div>
     <aside class="infobox" aria-label="Ficha do jogo">
       <div class="cap">Pokémon Chama Esmeralda</div>
-      <img src="data:image/png;base64,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" alt="Tela de título: logo Pokémon, letreiro Chama Esmeralda e um Tyranitar com chamas verdes" width="240" height="160">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAACgCAIAAAC9uXYyAAAlQklEQVR42u19P2jj2rrvNzkekGEGpGLAKm6xBvYDDZwNcbEhKm6hA6dwOqd4EBe38OkcuA/i4kFSZjpPF3fXpdPFXVzsy3ZxCrk4YBcDUXEfs4opluBskIqAdSCwX/HJn5eWZMeemczEzhJm8Mg/LUsrv/Xp+/PT5xe/+SKOouGoDwCtZmPfcUBvj7lNg6Db6wPA8dEJ7omjCABMy0oR5hwap58KEdi2Q4BN8Vc3fv3I+9Bq9LtmoxX3u2aFHf6l1r8eXh/Vjn4bNv5S63cG/Yvzbuu0CfFa47uHHjMM3O3zBAAG16MZs5nNcCcXvMwFAERhAABWxcH3rWazd8sbVQcAfJFwwQGgzMWM2XggHjVjNr45PnS7vR4dTkPVjzya0v4kaB86AMAMYw9MMJmlefYDNjN9mczK/AligBhiHuH/hAhSen0R/urGJ67g1mjFIb/5bdg4qh3Rzs5NYFWcq76/5vgPbsxm8vdGYcCnfePAu7rxkc0yUjmWDozCAEwwDjw+7SObcau47rLv3dO8emr8RotIjHRc13HdhZncHM9s1p9IbGieE6dpp2xN1xmfzDMA2PaCZGhx8Q1yGg1q4YYYPBZPAP9dsVkVp+K6rm3I5hkHwVPaw/uI3n7AFs9fy8j9TfBZK/jbsBH2Lg7Oe8jpvFHcYPzs5toG0pELjrQmviqcxtXli2TFaAtmxxk24xfRsfhG5vfe0mvQ23egdBRlmBqvpP4X4WuuE/o+GU40zOOLJtppmUDo4K4zvmUZGZ/BMFbY4Lx7UOaiPwnQyQ59n1aUYp4zt4v5Vj/yZDbj4bbkUpXyIYvm2ffzMiwrYwWzHIqjKAWYKU2/AI+cHvoBOdD97s1vw8ZfahfMa/JRj9jTajYXI6wY31zK4Irrhr6P/5LJ54IDsw1mw2ASDjpn592rG1+2wXiIwnhkMy6wcNABAKfelO16fxI0qs4g54KX0vMGAACMvvX2vV3nGOIoMsGivwVSJ0PfL8VjeHfM3Pdz7kqc7qHNBoDWaTPwfQeJtWJ8UzXPitcxmDMbDbAcF7L9Bp/2wYTjQxc5TVvo+8BsxSqntwsTAKBSbyuGv1F18v4GAJTwjGteAzN3evs+G+XsMrf1uMByp9zKYdbEY3YCARV2CNA337mNlj/ndJ9gzjtX9TGKxt9oQ05nfAnkm+uYltXt9SRSB2h7G/V65uviBYkxGMA3y1zwUhrDmtZx8yRzPWb2wswlvprGfwu8aVrL8KZpfQ0+RUoO9F9q/bMPvUar2e/eKIZ8nfGjKGG2sYLEGAsym4HNUus792rOOl15/NQGPzQ/Z51u90PPOPBocLLK/WxGMpe2kzM1sv9kLtKQGr/F+Dmn3582zz705KBwo/F5kqxvpGc5zn3Z+Ze5QEvvrlxOe2nOPC74sjiK0o8wHImlHLvGbyeeMtDvT5ut804mPF17/CgqJjS5AZRUAanCkhZuisa/6vtXN/7VjY8A5fyv+j4m7CquK4eA+HWK77G38JDmFxP4Pi2XwrKQxm8lHlROdy/aq3Iva49PBpsLLic36EWcxphPHv+q71/1/U67hq8Zs5V4EY+aMRszIZiExld+8Sx8aFox8hmblmVaboGLo/FbiweAerPZaPWUoHCj8au2uSIEzP8XOTdjNoQB8Q2J22nX5BG6R/sA++3O8LiRSeSRYUYeKyQWYpGKLinX47jzUNfMuudKXKLx24nHbF0+KNx4/CyflFs/UZnyG4onfXXjy1TmSSLntjvtWp7TCo/lxeOL5Mg2cJBSsauef2+uzKRq/Jbg54mO5lmv11iWZHho/ImILctQyitUTGE24zkq43+TucfcOvFkHq+oNSo5O0qb4LCYjeaCAziLoHBVEVVeweTOa/zW4hdBYbN5JqeBNxx/GQVTnZAktSM5qOzMCKFaZdla8yRpnXjdDz05fGTZJCCyuaiwQvpaeFhfi+68xm8jXg4K5w50k6otcq3xwfFNZi2jY36LwgDCIK+5EwIEJLYNzDBoNIwvryfJUdWQw9kyF+G8Ho5DKRrUTFCoZtHpvC0LFH1tYdZd4588Xk7rkgMtB4UbjS8EuIfeAyY863hEYRCLSaXeVvTZSGsAADuTfUv12Tf+ccM1Djw+6Jh2lT5doYcuLSvV0BU6ysGxlBLX+Dx+0/l8/PlHm007gltfDgpTEan55ddr2yBEqt8gySi+4QBWTjeH+mw0sSglLXNRP/Jk0Zykz8583YN66FJx2dZc4pbJ0W4+BInBYgYVSAHAsowI19/zwfNks/mEx5//aOFsEF4NCpEuq693nuXIR4Toy4a+mDFb0fiHXFgVp5DTi3yczQbXo/qRN7ge4cIAUoDEGTZTKho5ndcnlZRjVk+9xQz0eNLLnktj0+lj0nVaaejA7OeFBwYRT9acz/Q+/tjzbxniJqjP6eseeohvnXeotoLjrLjeVGRnFUSEzDAEJMuyE8x15UgOpXaL1Mc8wTxj9uB6BHPlHSpIG/W6MmCBHprZsml/8ZsvFlOZjW0Vfa2STkf/fc3I4LnheZJEUbJ6PtVMwved/5HPhQgGvR4+OVtvNhtHtS8eH5+TRYYpeuhFXm/QAYCz8y7moYnH5KLIDjdI0qX3Fy0AOGh1laXSqDpo0TGCnLsc5lr62nxxaP2pfIZ4ZhhRnHxDffPTn39YWw8NMdRcpz8YpBbfZiCJ+gGgddpU3J6N9dDKrU3R17IVgim9LdksZpDv8ZX65seYf89l/esg41g/wrZMD00GuNvrRYNA3hNHUeGcrKmHfvHbrSieXMkiFNbuSZIiRCbglRe3kl9UwHn86sG3At/uDDGphPfBQoNHo3UvR5SEWhOPFeMnNT88SRC2COkkQkdhQEFhLCYkiSa+9W65zPjjhqskKkgMLZdUiNChn9Yd8cRKKzJHtCefRccLFrlnznEPJsxXT80yvPLRNuIpdbWCmmrktDb+Cc6njFRkQzNmW0sedyUqN448qDo0YPdydNxwYx4taxcjs5kLXpbESTxJSqkDJ+XVidwxjyAC07IiKHhIQblg6vyADxTQp/hNMhhDB7xI48DbMTyaJQ5wPSGOJuRiyoN8Mf6pXS9u2DnpYS9kzrerGx+YTQ2QcEDbhtaJd3HebTWbsr9A7rhcIKTFgyk/PLwEsj51Xjh13rnzrwkWisQlZgPnOhmPAKDZavUnARdAz8nQlcvzIq+2HcPLHIWsRocLtXDwBfgneL0pleeZuAdpjWxGR4sqLLhdT9LmYN1er5VNk5e5wEMUBSkm8vBs60feWnrovA+tXDYmvUlsBam+W/3L0exghnw38XOfuO3ipO3L61+KLhzFh14Tj8napzk/MG+vIXM6lUEDxGIiu7UYMwiRyuUo2sP7QDIe5VPy1GKGnhIvcwFVB/cjs9fWQy/LbkpFHdm5ocvGvxal1mWRyk7il93K5ECZrNGKW98y/NO8XoXWyXgkh3FKpZDko+gkHNkGij87NwtjnA81ZswmNtOCIY+FuL6WHlrRv5J5pupluKQlmSL5wwtb0exsB/AhF/hn7viLm7IvEsjV0mjYTfFP7XofdJvJSMuuBd6RMmvYZvJXdz/0MCFtHHjReGQwW4me834vrK+HXq1/rbguli6VLLdisZQaZj4rvht4fD6ZC96fBMrTb1zw0PfxJXuHG+Gf1PUWesxWxcGYSt5j2tVKvY1Mc22j48fIK6RW93KU/3bUQ8v2XskJ5p+TXVcPbUn9gJW0BjGbzzOR8p9WXsGUxMkv+p3BK3nlrOeAPYz35aT1pniZ2U/keldXVQhmVZwZGew5p5X+0FSFwa8e+sHxoas4MyA5M+jKy77Q3lf2A84/sI6tAdFyy56THC5EYUDrQdYc7hKebA8+giHvkXd+Mf6pXW/eSOOnMumT8egL+kMXrhx5T38S4K0j9P119dBKP2AhUo+H5IKZ0sC8Op8UrVfKh+Ac0fLaGTz5xMo9WkBSWLDdFP+krne1k52MR+X1+kMjl1aYfDof2QOhnamuejM9tGRLBCSoRKEz4JLjgSeXhAFIF5zRqUg5GhRoc8F3A0/GA+/d/lwOX+ieljfHP8HrlZ+Myqf88v/F3PNG/aHxrGjJFa6TZDxKMvLR5VTOC7rpZzXytwnIKqeURCYV9+Wi/y7h8SNZm1GoGlih5ViNl9nzdOZHOZBP+/ITU3LaTl4tcsghy0fpe0HSMCm5P3n9zJhNMWjW5YjX7QdMT93QnUJ5uBe/HnPppl1NTyUMEoBYTKyKE/p+Odfmegfw8kSvoGahWGIdfCwmT+p6ZeLC/NlB5SMiYiwmrWZz0/7Q8iA4rHI3kDMqL367FRk5RyxRGZY+byMLrKiApKSW6NrS9WJX5Smjc8LlJSO3Gs/2GyDp1ldvcv/6NfF82n9S16sQelERLBoHAM46XWqblI9xi/tDxxBHUbd7Lo9J5yOvFiCXI9O6PeuBrENo+mPInI7CQC4XFc4anZ+iD9xefD6sUZwx5YZbXIZYjqdPn8j1htnnsZcdAnORfvMdI75l+kNTPVLpDw0ZC9u75fjkC30pfSOO/4V6aH8uXVcIDdl+wK3TJoz6rDpv4DcRvf7QnWdtBOcAYDNG7xcuDWOOwwBgNBzxKAEAt+po/JbiHYctOGB6Ct8e1EM/yE8ZnyV0/mBzVVBYSGj5FxeR0KPhyKt5vf6QWQYA8ChhuZ81oJ3yp3zetlXjtw6v/JV5lDQbNVa1ZUL3fI4NDED64Z8H9dB5fmJNEfEv8JdkC/TQ8q8ZmKqRlh+KlEVYCqcB4OwwGfZ9H1Uf2XnB66d5yYRHS+ZI47cInyehzZjTOCc99IzZSpEFaZ3qoXPJCVnetLDo2VKimraT9dCL91lCkwOtVL+VtGX6S2H7Bt2GCq+c9g/tVu3ABYAwFrPrE2Ue1a/Q+KeNX2bUvfMeAJAeGh93lTVGXHDMWrRybUMA1Ca8retpmQuZ03OXY+6dBLc+AJDAP/WhHXN1ikMp28iBhSN8ZUbKR5fYFyKGCACiUJ2vqsMqZjpOGAuY953Q+K3DH0w/kG3GN07rHCQFqRCQ10Mjc9Jnv+cORmE/aZK4UO/dIh9a9k5iWMffyD/cS1VKzxC+ZMiDd6esYlP7kmVzlDEGGr/N+IPpB2Sz47Bef9js9WU9tLx1bgI5Dy0TGrv8yyZVCeqI03/6j1budwkMAEN6DyDukuQlWKW0CvM5vgeAf/z6d/Ke/1m6l8s899brMhcv47vk7nfj88c4uSc2A0B8dyd+j41S2bIMSF4mkJRflcqvSsndfbH3r/HbjP9/9n6dJW/eWEHA/+r9Auznjx8/fy7Zh+yVVSrF94tBxN3rf30MXsZ3AFB+9ebv//3rL26VzLlVKvEkQRISFWn71f+fP//8b/Ct9NCr+gEDMMtwc81PY4iwwRTJVq2KYVWM5UGtxm83Pk3exQAb6qFhk37SX66HXrYp/YBtxvxJwKOAWUaQuQ2wxAbDKoMJRmIqcS4U5RI1fovwIgygEllgA0CvP8ScneyObqqHXrOf9NfqoWVTLVvlKAz4tG8ceORAFwTLAsQM7HLRcDZA/kkIjd8qfBQm1OUxCDifCD4Rm+qh8/2kfZ6gwZa1LtRPei9TejEXjYHTzJ8Jjus6rqvooUESSVHuGTmtCEfk9E3+DpXwGQAYRhkEZF40TRq/zXgeCqoajoYj9VNJD42GuVAOQL13MVPcnwSD65Ei7aJa3l6x92w+IInGWwaOgo8wyOcnc9qreehAY0SY5zSDSsHoNE25OdL47cJXTFtwjvfnIOBUvlhXDy1xGqXYzGYV10VOdy9H2MqDrPge+RgrQkPLMtYJEEF6Dp620XAkOHerjnP7YVm6xy6DwcrF06Tx24/HkorNWK3hIln7kwBLb7LeUCExyuiOD118qE9heaaf9DzT16jXsy5HltwUYy5jMN4pmM3kb8LlgmqscNAhLQv6HlGYrAiNi+doo9abGv+08RTkyXrovHmW9dDHhy4J7gsf5EnGoygMWs1mGhQC9TCduxlp3sOyUD66wusgZhfcJvYbmKyhKlHx8oVw1aLX+C3HY+0QOcAnAsyUoBmMpNDEF8h6aICa6+B+OhBJj6/WaZOqMHsP9ifeaCPXXj5jlBHKWQ7ZSPPbWbFbpgTRGr+d+EnAWfMaTRtxrOY6x4cuMTIKA7SyANCo11vN5kLIMeck7ozCIBj0gkEPTXKr2WzU67K3nPa2U3/JS8pGR1FB69F8rMpsBtm+O1EYnHW6o3ZTSdilXoetulx2GQQrYxxdcBfT+K3CWxVDDpmQzUHAHW/BN2Stooc2mZXXQxM/F0Q3pY8k/F5BcsNUny8s7Gq8bFP0SYVaLWUb3XJc9GveyDR+u/C8d5Sy2ck4n71bjmnp+pHXOklfV30/beW8LPmW46eMf3Q9dGXaI1pj5g5dDgPx0qL33jH0zwBAzBZZz8wtTOO3BJ8IDnMZU9MYotvp1TyoNnZBD42cTrwOJtsXhM7NEYUdmWmyi3NDGv9k8ck8HRGFSU2kP0PRPG9w8GCr9dCyfJQ1rxd6WWYnyawwecnelSnswMlKZ0rjtwjPBWlNkdBezQsCvvV6aEf4isuBelnDtsRs6RzJm8HKqB/Q+C3CJyIi/XRl9J7klk7rfLv10P/733/i/8Otcmn89j/T9XJ3J36PSxXbLkMCL+/v7+E1wGuAu+IJuo/v43/eJ69eavwW4e+TO9JP/zn+x2vLSnMd266HpgcKyZFK7ynJDKVbhlFeRB7Li0wav134Qj003f8fTw+9h8FfWimMc78DGUPMo8D318/cYZKcDHZaIirSjqb3r3xO3i6uqWr8FuGjMPU38K+P6n6URMt66Nb1tHU97V6OSA9N93mr4gz9RdYBhaPIQ2Ij6aGpIKj10Br/WHith9Z64l3Daz20lOzUeuKdwGs9dHEOfxvx/MLlFy7vZV69U1vrobUeevvwvOdiTKy8AGB0ur9717smXuuhtxhfeOG4U+uhMxith37ieDTPK7ZVRhq0HlrroZ8YPghDp1IRnOeNNC7vIAw9rYeW5Udm1rBmcxKyHpr006juUPpJaz304+IF59QbXH7/QHS1W/OzTA+9jr5Z3tbRT2s99LfHdxu2d3CA5pn+RT9S3jkaj1t9sQPXC1+kh15T3wxzPfSa+mmth/72+HbjxUV9/3wwrVTYO6a6m7c8DEOOgE7/D3iWeugFlR/SNxNsTf201kM/Cr7bsJ1KpeHal76a2z9xzb4vgjCsnX3amevdVA+9vr6ZTPia+mmth34U/PD924v6PgDsM3b4YXBzWgcAfDPlHADOB1Mi9A5cbx6/Qg8Nm+ibZTYrW6F+eq/gjEwpxjQBACYizseFsvcss3nGbPmnOL2aBwDMMsiB5qGYBDyjRVwtXOQzfjvbLnzt7FPfFwAw5dyppNbLqVSQzX1f1C4/7dL15vGydpT0PBgUEkGJVA82tr2eJCQ0lT1boplVcbofeqD10I+EH75/G0H5fDDt+6Lh2lPOp5w3XLvvi/PBNILy8OTtc9ZDr69v3lQ//T36Q/MoKPgpNwGJPYNyuTgnLwpqqtuC5xfuzWm92Z9WKiwpG+eD6WL9M6dSKQPAzWm9feGyc38HrrcQH4UJ9YfmUeLV0p8qJA6u2e8ZNuwnXQIzV1WJF7kS2EQPzaXqN/4ucqXe9nvni4S0rc6RMMAuA09grWnaHvyU8xPXxIiQMYcxBwA4DygunGYT0tt+vYX4KExMSCzLmM11dgBwJVR9s4AEAMBOFP8Y9c0A0DjyFKaF2cq5rJ/Weuhvj2dNH12LMORIaDLPABCGHF0R1vSfpx56I31zviYNK/XTWg/9KHjW9CsVdnBQm82S0WhAr9ksOTioVSqMNf1dut6N9NCwib4ZNtRPaz30Y+HDkI/HQ8acg4M0P3VwUGPMGY+HYcifrR56U30zbKif1nroR8RXKozzYDwe1s4+1c4+jcdDzoNKhe3q9a6J30jfvKl+WuuhHwtfO/sUhjwMOaWcaU+rL56zHho20Tdvqp8ufXM9dP5esNBD2wXRIb+dyTKXJTe5xe1si/CLWuAcj3sYVHbyejP4+eeTgNea1zA9l/PQxL9urxcNAnlPaluznKy5jmlZ3V5PInWA/mujXpfpqvXQGv8o+HX00Ov0e17sfEg/3fM5aD20xsP26KGX4Xu3vOfzRtVpVB2th9b4R8F/cz30Mn5ei5jZDCuLzDC0HlrjHwX/bfXQy/ipsBm0Hlrjt0IPXchPeoYFS9dZQucPNhfuttZDazz8OD10IT/xGRZ8gEUmtNZDa/wW6KEL+YllEMXv1XpojX/yeugcP6/6fv3II/qhA4zLY63+0Btl7nR/aI2Hlf2h0/HW6/ec5+dV35f1QrJ2DwDW6g8d5KrnhaZa94fWeIXThf2hN+r3rPATXWd0NlB/p0g79hZW2Vylh86cvNZDa/z310Obmeogshnpl/q9aVCYr9PIB8cAAJZl5N0drYfW+HXwX6uHjjOuM5pR7GRAxtSVpBl7Vdu0LIMYbFkG3iPwjcWMPJu1Hlrjv6ceekXeAvPFti27HADMMJDWyF38L77JPzueWXxaD63xm+M30kMvzLPkfGc8jexPtOzJdnezdKDWQ2v8GtvX66EBoNvrIZu54GjCmc2Qfm5WCroH33TT/aE1XsEX9oeGtfs9K54G8cpdImnek7PZPEl8nnkpyRQ5WQgAg+sRlh/xFkDlbpg/SkCFFZnNqSdtb+iZafxW4RXHkvTQGK2ZLFXPtZpN48CzKg4m6a5u/DRDZ6ppN3K1K65L/RoV7RAA7BFlhQCRc+pxJzEbXzJM8YEwbSdnW7QeWuOX6aHX6fcs22Y0z+7Kx01eTEQEkKEyqo6QlMaBR86KsilSO/mLidCxmBxAAloPrfXQOT30mv2eYS4xpVCN2EhtSDPy0ZtJlOcxbc1WC3PgMq1lKuclowqhz2ru89FDw/QcAFjjwyPhd0YPvX6/Z4wI0bAim+UGHeggtA+dBaGbZ9eSdxvMLaiD/kOj6sglGchpj2CJDBrZDAB1Zj8XPfT03HbbACD8jtfof3v8ds3PSj30+v2eAaD7oefUm0q5Q/4vKkiR0CVcKFQQl4t8xGbK9im0lr8eE880CK0NzECjyzEc+0B66DIIKCfJLP/0Jb+d8UVTP0mPuyV49DLR+sL+hYqf71fxW3u9hfjEMiCyYoisisFvE7fqLNrbSf2ebRuObAPAAYDOzcJEJkvKdoVm1BfJkZ12fNxT2Ky4HOpatNk6yTvZYD8HPfTw/dvh+7cZ0PTcdtu224bpuYyH4WK/DJdH2Hk9NGzS75moTM0FEIMca1QdxbQvzUOj3lQJB5WmY7JJRjdD3mPa1Uq9vfN66OHJ245Xb15MhsOr9Di3vQyfCYDmsOHwqnkx6Xh1eVXsth56/X7PlIdm2SYZyOaCwoqMyCfdlCWiVEwKqyr0Br2X56OHbl5MeufVQk4P378dnryV8QTonVebF5NtvN7V+BV6aLnfc+t62rqedi9H1O9ZpuLQX/zoROj7WH+R2by0sALz7nc4YhQGJPAjaw+59qaKScZPZcYn49HO66HTt35H4TQRd/j+ba12XKsdD0/eKkQnNuPhOzY/y/TQChfzfqzc7xlMMA48Pu3L3FMEcMWEJjZbFQcjPBT4oZsCS1r2qjemrOMBz0AP3eqL9mjgzauntdqxzOneebVWO37wIy9J2qNB/odXdlIPLd/2H+z3nLebJPDHDTWolLbbI4LKzrG8aNBUc8EJSWXt7HIMlP/inuejhyYrS8SVKbvio4x5fgZ66I36PctaDnRi5VQ0vsnooYmLtESiMAh9X+Z06Pt50yvTmk/7y5j9HPTQZGVlahJlMa2RJjdydlr4HbLuz0EPDRv2e87nKmQ24+EZPTSWP5CdqEPFPaHv5+8C+JHyrchm+SO5Uvgc9NDodSg7a7VjIrHsUttuWzHbANAeDdJWpbuuh9603zMAhIMOADj1ZsV1ic39SYCGuUAPHYsJ0ZH4LTvWyPI8m9UkS3YcfP9M9NCFbF52SCGnd3V+8nrojfo9o9SuUm8rzjdV/ZS0XYmgyXiUpyMAwBQwo5x+96Bj2tUVNpv2pIck/nPoD93qi3bD7nj1kWEsS0UrnEb/JA0HlV+V3fX+0Ov3e160wJ0/pYJvlrngJTa4wAXk7DPYd6kOgpHpfG0JMbiYxwQAwrcZw/MbiaQID4JzGFwAQMCYV/PkCHdX+0Pnc8xrcnpLr/fr+0OjDe7dctlgm0ztD33W6XY/9DDzhokRssr9Aj10lCD/RsNRrz/E/zLLEPMf0hOcU5RK6eT18WkOcqUqemf0weRJ/9fZ/upDCJB3vndvfr6nHnpPLnlQzhj3KE+a0H83wgvOsbaC2lH1xlQ0R+xd2WDlgpl6qvjh+7ftxgsskVDKYgWn6SMENy8mBWqQ7Z8fcizdqoPJLnQhsKCNPaHr8x/VpOdLsAmYaVlyqyRM2FVcVw4B0etQfI891rwuH10i+eQfMJZNMu4P3p2y5vWmeB4l5aPL8tGlZRmsYrOKvXqOaJpw9avT9PTww/dvUYnhjC4AYGQYTW+tNE7TM9DhdkYXqRrk/dunf70b4ZHTdPfG0jeq+5GdSqvF60nSuQkAQHavozDAJ68oCY0v2bde+NDDsV91GD7GiDFpGfXKAKRnBQD8WtR/boZ/d1oFqJg2AFRMCGNhWSyKEjDKeW0AqihJX8vKwCGEd+WMHvcp4Ycnb5sXE2d0EXjnAABz/2E8Dg4OnBVsHo8Xf0g81hldNC8mvb/Zrb54ste7Pt4Ai7Qc6e2o5g37vtNKTTI+ZiKEk9dDGwdeMh7JbjQZZkWdT9adUtEljEOlHxVP9coAQHpWpSDyTfA7oIee9E4KdUW9UdL0jL+9ny5j89/eT5ue0RsVxBXNi8nkslk96YHWQ+d98TX10OphoZgEXNb+WRVjRTXky/A7oIdO4/fRhRrl+51Csiqkz6c4aCith/72eui8nnU1TTfFb7veV/Savn+DzkbgnTujC6QjxnnF+bgs6QmMx9I4vn8TjU60Hhq+SA9dsvedZVX4xAbDKoMJRrJwZ1Jn5evxAhJ7BuUlofTTx6OlmSXvAJCOzuiiVjtuD6+wCij8zrKENNG9PRrUaseQJHh44J1fz5LTnZifKEygEllgY57AqzGMCHlWD01N7kgPTQ+tWgBDP8BSeZmLcF4Px4zHQ3po3c94c7zrHpKRzkQ/SUJ2WjHVtIcwcmiI5tl1D3djfn6QHlr3M/5SvO/fjMfB9Sx1GzAHV6sdt0cDqHkKiVVy17zUPAOMDAPdletZMh4Hvn+zM/P5A/TQi3Kl7me8Cd7yLl338PS07fs3Tc9AWgMAPll4etqiRwzz23B4dXraIjBSuekZvn9zetp23UPLu9yZ+fwBeujMaRXeT3T/4yI80m48DpDW5+ep41E7+/TixYs//vgj71fgnj/++OPFixckSDo/P0cqY3JaZvNuzOd31UMXnJPuZ7w23vIuT0/bSGvfH0VRjDRFTl/PEqh5SOKU3DXvepa8ePGi/l8CYVEU+/4IqXx62ra8S62H/ho9dOnBMyT9a7G06tnjsQhyetpUjGvt7NPw/dvxeNjpLHa22ycA0OoLgHR8y7u8vj65vh7mDfNuzI+qh/bg+NCldnULTs+fzqadX6iHXnJT2X497vfFw0lPzED5A6O1brffKnsYVOTxC6is9dBSQptIDGvoofeWekK6//E3wtfOPtUuP9UuPykqft0fGjucU39ofOX7Q591uvRIKyZGGlXHtQ3XNgr6Q+t+xhq/U/2hU39O9z/W+N3oD93p/7G9/Zg1HnR/aKU/dO3s07b2Y9Z43R8a40ipP/QL9XljWf86W3oNGq/xq/GJiKIo7ddYGb1352bYaZ3Lemh5w2dVKA+dJ/QyPbTsdfzpp3//T2Xc+/g+/ud98uqlXYYEXt7f38NrgNcAd8UXoPEan8ffJ3eWZUDyMoHkz/E/XltWmutgP3/8+PlzyT5kr6xSKb6/X/gyd6//9TF4Gd8BQPnVm7//96+/uFUA+Md4emda8V3MbGa9thBDeug7eM0Fd//XGwCwSqWleuid6d+s8T8E/8P00LCremWN/6F4rYfW+F3Daz20xu8aXuuhNX7X8FoPrfG7htd6aI3fWfz36A+9etuN/s0a/6Pw37k/9BJCS4uM386K3SaN1/g18JOAY+M4RQ99fOgSfenXIwCgUa+jrFTxobHXDMzrhUv7Qy+9a+xc/2aN/5749ftDp5spjRADmNDz0xQ122+A9Avz5GNwwRvz5qXUhOlPf/6P/3sf36vn9BoAFrVN/s+4+ubfYrh7/RKSVy81XuMfxN/fxcldur/06/+p/vxTqodmPy9ghvSKARIAAwCgN+HTz3Gj6vxsv3HeMXxFlh3fxf/6GNx9/nz3+fNff/npZ/sNRoRySzGth9b4R8E/qIfOmGS0yzwCgGsRKxJnAODYuEe5RWSpnBJa66E1/jHwq/XQCxJHkRCB887F93k2Y0/RwjeFm9ZDa/zj4FfqoSnUC259AEBC0zMsmFeWzfM6VEaA1kNr/PfWQ+dcDYD5MyyYj1MInWftClprPbTGf289dG4FABjw8ePnv/7y00fx+0fxO4mb81S2SiWrVMI36xI6Pa3yfQLSNWCou+IyNF7jpe0OBCQvkdNvwtFry0rz0NbPkCwSGrhd9X389aA7eB3fxez1m9evIb6/l1krG2bidJ7Z/x9Lc0f74/mKIwAAAABJRU5ErkJggg==" alt="Print do jogo: o protagonista surfando perto do Kyogre nas Ilhas Seafoam" width="240" height="160">
       <dl>
         <dt>Versão</dt><dd>v1.11 (beta)</dd>
         <dt>Base</dt><dd>Pokémon FireRed (EUA, v1.0)</dd>
@@ -260,6 +309,7 @@ footer p{margin:.3rem 0}
     </div>
   </section>
 
+  <h2 class="sr" id="g4">Destaques</h2>
   <div class="news">
     <div class="box hot">
       <h3>Novidade: v1.11</h3>
@@ -284,7 +334,7 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= INSTALAÇÃO -->
 <article class="page" data-page="instalacao" data-title="Instalação" data-k="instalar patch bps rom firered emulador floating ips rom patcher mgba myboy save" hidden>
   <div class="crumb">Começando › Instalação</div>
-  <h1>Instalação</h1>
+  <h1 tabindex="-1">Instalação</h1>
   <p class="lede">O jogo é distribuído como patch <code>.bps</code>. Você aplica o patch na sua própria ROM de FireRed e recebe o Chama Esmeralda.</p>
   <div class="prose">
   <h2>Do que você precisa</h2>
@@ -319,21 +369,21 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= FAQ -->
 <article class="page" data-page="faq" data-title="Perguntas frequentes" data-k="faq duvidas perguntas pokedex nacional cheat save trocar rota" hidden>
   <div class="crumb">Começando › Perguntas frequentes</div>
-  <h1>Perguntas frequentes</h1>
+  <h1 tabindex="-1">Perguntas frequentes</h1>
   <div class="prose">
-  <h3>Posso trocar de rota depois de escolher?</h3>
+  <h2>Posso trocar de rota depois de escolher?</h2>
   <p>Não. A escolha no começo do jogo não tem volta. Para jogar as duas histórias, use dois saves (ou duas cópias do arquivo <code>.gba</code> com nomes diferentes).</p>
-  <h3>Por que os Pokémon de Hoenn não aparecem na lista da Pokédex?</h3>
+  <h2>Por que os Pokémon de Hoenn não aparecem na lista da Pokédex?</h2>
   <p>Antes da Pokédex Nacional, os Pokémon de Hoenn capturados ficam registrados, mas só aparecem na lista depois que ela vira Nacional. O Prof. Carvalho entrega a Pokédex Nacional depois da Liga, quando você já visitou a Ilha Um e tem pelo menos 60 Pokémon registrados.</p>
-  <h3>Dá para completar a Pokédex sem trocas?</h3>
+  <h2>Dá para completar a Pokédex sem trocas?</h2>
   <p>Sim. As 151 espécies de Kanto e as 202 de Hoenn podem ser obtidas jogando sozinho, nas duas rotas. Evoluções que dependiam de troca usam a <a href="#itens">Pedra de Elo</a>.</p>
-  <h3>Derrotei um lendário sem querer. Perdi ele?</h3>
+  <h2>Derrotei um lendário sem querer. Perdi ele?</h2>
   <p>Não. O lendário foge e volta quando você sai do lugar e entra de novo. Ele só some de vez depois de capturado.</p>
-  <h3>Posso usar cheats?</h3>
+  <h2>Posso usar cheats?</h2>
   <p>O jogo tem proteção contra cheats de itens, dinheiro e fichas. Itens falsos somem e o dinheiro volta ao valor verdadeiro. Usar cheat pode bugar o save. Veja <a href="#sistemas">Sistemas do jogo</a>.</p>
-  <h3>Onde fica o meu próximo objetivo?</h3>
+  <h2>Onde fica o meu próximo objetivo?</h2>
   <p>Abra o menu START e escolha <strong>MISSÃO</strong>. Ele sempre mostra o que fazer em seguida, nas duas rotas.</p>
-  <h3>O jogo é pago?</h3>
+  <h2>O jogo é pago?</h2>
   <p>Não. É gratuito e sem fins lucrativos. Se alguém te vendeu, peça o dinheiro de volta e avise a moderação.</p>
   </div>
 </article>
@@ -341,7 +391,7 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= HISTÓRIA -->
 <article class="page" data-page="historia" data-title="História" data-k="historia enredo escolha rota birch proton mochila magma aqua rocket" hidden>
   <div class="crumb">História › Visão geral</div>
-  <h1>História</h1>
+  <h1 tabindex="-1">História</h1>
   <p class="lede">Duas histórias com o mesmo começo. A escolha na Rota 1 decide se você será herói ou vilão.</p>
   <figure class="float"><img src="data:image/png;base64,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" alt="Primeira página da introdução do jogo com o aviso de fan game" width="240" height="160"><figcaption>A introdução do jogo apresenta as duas histórias.</figcaption></figure>
   <div class="prose">
@@ -370,7 +420,7 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= HERÓI -->
 <article class="page" data-page="heroi" data-title="História do Herói" data-k="heroi treinador rota birch steven may campeao blue pilar do ceu" hidden>
   <div class="crumb">História › História do Herói</div>
-  <h1>História do Herói <span class="tag k">Rota Treinador</span></h1>
+  <h1 tabindex="-1">História do Herói <span class="tag k">Rota Treinador</span></h1>
   <p class="lede">Ajude o Prof. Birch, enfrente a Equipe Rocket, a Magma e a Aqua e salve Kanto ao lado do Steven.</p>
   <figure class="float"><img src="data:image/png;base64,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" alt="Norman no Ginásio de Viridian falando: E como pai, vou ver com meus olhos o que você se tornou!" width="240" height="160"><figcaption>O Norman enfrenta o filho como líder de ginásio.</figcaption></figure>
   <div class="prose">
@@ -395,7 +445,7 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= VILÃO -->
 <article class="page" data-page="vilao" data-title="História do Vilão" data-k="vilao rocket rota proton giovanni roubo uniforme chefe lealdade redencao" hidden>
   <div class="crumb">História › História do Vilão</div>
-  <h1>História do Vilão <span class="tag r">Rota Rocket</span></h1>
+  <h1 tabindex="-1">História do Vilão <span class="tag r">Rota Rocket</span></h1>
   <p class="lede">Ajude o Proton, entre para a Equipe Rocket, roube Pokémon dos treinadores e suba até o topo.</p>
   <figure class="float"><img src="data:image/png;base64,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" alt="Recrutas da Equipe Rocket com visuais variados em Celadon" width="480" height="320"><figcaption>Na Rota Rocket, os recrutas são seus colegas.</figcaption></figure>
   <div class="prose">
@@ -437,34 +487,34 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= PERSONAGENS -->
 <article class="page" data-page="personagens" data-title="Personagens" data-k="personagens birch may steven proton giovanni norman blue maxie archie tabitha courtney shelly mae carvalho miguel" hidden>
   <div class="crumb">História › Personagens</div>
-  <h1>Personagens</h1>
+  <h1 tabindex="-1">Personagens</h1>
   <div class="chars">
-    <div class="char"><h3>Protagonista</h3><div class="role">Você</div>Menino ou menina, filho do Norman. Na Rota Rocket, ganha o uniforme e depois a roupa de Chefe.</div>
-    <div class="char"><h3>Norman</h3><div class="role">Líder de Viridian · seu pai</div>Especialista em Pokémon do tipo Normal. Entrega a Insígnia Terra e o TM26.</div>
-    <div class="char"><h3>Mãe</h3><div class="role">Pallet Town</div>É ela quem conta que o seu pai trabalha no Ginásio de Viridian.</div>
-    <div class="char"><h3>Prof. Birch</h3><div class="role">Professor de Hoenn</div>Veio a Kanto com uma mochila de Pokémon raros, que vira o alvo do Proton.</div>
-    <div class="char"><h3>May</h3><div class="role">Filha do Birch</div>Aliada na Rota Treinador e rival na Rota Rocket. Sempre tem um Torchic.</div>
-    <div class="char"><h3>Steven</h3><div class="role">Campeão de Hoenn</div>Ajuda você no Mt. Moon e no Pilar do Céu. É o Campeão no final Lealdade.</div>
-    <div class="char"><h3>Blue</h3><div class="role">Rival</div>Neto do Carvalho, sempre com o Squirtle. É o Campeão na Rota Treinador e no final Redenção.</div>
-    <div class="char"><h3>Prof. Carvalho</h3><div class="role">Pallet Town</div>Entrega a Pokédex. Na Rota Rocket, não quer saber de você até o fim da Liga.</div>
-    <div class="char"><h3>Proton</h3><div class="role">Agente da Rocket</div>Tenta roubar a mochila do Birch. Na Rota Rocket, é o seu mentor.</div>
-    <div class="char"><h3>Giovanni</h3><div class="role">Chefe da Rocket</div>Antigo líder de Viridian. Quer capturar o Rayquaza com a Master Bola Protótipo.</div>
-    <div class="char"><h3>Maxie</h3><div class="role">Líder da Magma</div>Desperta o Groudon no Mt. Ember.</div>
-    <div class="char"><h3>Archie</h3><div class="role">Líder da Aqua</div>Desperta o Kyogre nas Ilhas Seafoam.</div>
-    <div class="char"><h3>Tabitha e Courtney</h3><div class="role">Admins da Magma</div>A Tabitha aparece no Mt. Moon. A Courtney fica na Mansão Pokémon.</div>
-    <div class="char"><h3>Shelly</h3><div class="role">Admin da Aqua</div>Aparece no Mt. Ember.</div>
-    <div class="char"><h3>Miguel</h3><div class="role">Super Nerd do Mt. Moon</div>Divide os fósseis com você. Fale com ele de novo para ganhar o outro.</div>
-    <div class="char"><h3>Pesquisador</h3><div class="role">Laboratório do Carvalho</div>Dá dicas de onde achar os Pokémon raros e, depois da Liga, os lendários.</div>
+    <div class="char"><h2>Protagonista</h2><div class="role">Você</div>Menino ou menina, filho do Norman. Na Rota Rocket, ganha o uniforme e depois a roupa de Chefe.</div>
+    <div class="char"><h2>Norman</h2><div class="role">Líder de Viridian · seu pai</div>Especialista em Pokémon do tipo Normal. Entrega a Insígnia Terra e o TM26.</div>
+    <div class="char"><h2>Mãe</h2><div class="role">Pallet Town</div>É ela quem conta que o seu pai trabalha no Ginásio de Viridian.</div>
+    <div class="char"><h2>Prof. Birch</h2><div class="role">Professor de Hoenn</div>Veio a Kanto com uma mochila de Pokémon raros, que vira o alvo do Proton.</div>
+    <div class="char"><h2>May</h2><div class="role">Filha do Birch</div>Aliada na Rota Treinador e rival na Rota Rocket. Sempre tem um Torchic.</div>
+    <div class="char"><h2>Steven</h2><div class="role">Campeão de Hoenn</div>Ajuda você no Mt. Moon e no Pilar do Céu. É o Campeão no final Lealdade.</div>
+    <div class="char"><h2>Blue</h2><div class="role">Rival</div>Neto do Carvalho, sempre com o Squirtle. É o Campeão na Rota Treinador e no final Redenção.</div>
+    <div class="char"><h2>Prof. Carvalho</h2><div class="role">Pallet Town</div>Entrega a Pokédex. Na Rota Rocket, não quer saber de você até o fim da Liga.</div>
+    <div class="char"><h2>Proton</h2><div class="role">Agente da Rocket</div>Tenta roubar a mochila do Birch. Na Rota Rocket, é o seu mentor.</div>
+    <div class="char"><h2>Giovanni</h2><div class="role">Chefe da Rocket</div>Antigo líder de Viridian. Quer capturar o Rayquaza com a Master Bola Protótipo.</div>
+    <div class="char"><h2>Maxie</h2><div class="role">Líder da Magma</div>Desperta o Groudon no Mt. Ember.</div>
+    <div class="char"><h2>Archie</h2><div class="role">Líder da Aqua</div>Desperta o Kyogre nas Ilhas Seafoam.</div>
+    <div class="char"><h2>Tabitha e Courtney</h2><div class="role">Admins da Magma</div>A Tabitha aparece no Mt. Moon. A Courtney fica na Mansão Pokémon.</div>
+    <div class="char"><h2>Shelly</h2><div class="role">Admin da Aqua</div>Aparece no Mt. Ember.</div>
+    <div class="char"><h2>Miguel</h2><div class="role">Super Nerd do Mt. Moon</div>Divide os fósseis com você. Fale com ele de novo para ganhar o outro.</div>
+    <div class="char"><h2>Pesquisador</h2><div class="role">Laboratório do Carvalho</div>Dá dicas de onde achar os Pokémon raros e, depois da Liga, os lendários.</div>
   </div>
 </article>
 
 <!-- ======================================================= INICIAIS -->
 <article class="page" data-page="iniciais" data-title="Iniciais" data-k="iniciais starter beldum bagon dratini larvitar mochila" hidden>
   <div class="crumb">Pokémon › Iniciais</div>
-  <h1>Iniciais</h1>
+  <h1 tabindex="-1">Iniciais</h1>
   <p class="lede">Os iniciais vêm da mochila do Prof. Birch. Os quatro são linhas pseudo-lendárias, nas duas rotas.</p>
   <div class="tblwrap"><table>
-    <thead><tr><th>Inicial</th><th>Tipo</th><th>Evolução</th><th>Final</th></tr></thead>
+    <thead><tr><th scope="col">Inicial</th><th scope="col">Tipo</th><th scope="col">Evolução</th><th scope="col">Final</th></tr></thead>
     <tbody>
       <tr><td>Beldum</td><td>Aço / Psíquico</td><td>Metang no Nv. 20, Metagross no Nv. 45</td><td>Metagross</td></tr>
       <tr><td>Bagon</td><td>Dragão</td><td>Shelgon no Nv. 30, Salamence no Nv. 50</td><td>Salamence</td></tr>
@@ -487,14 +537,14 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= POKÉDEX -->
 <article class="page" data-page="pokedex" data-title="Pokédex e locais" data-k="pokedex locais onde achar capturar kanto hoenn pesca vara safari natureza" hidden>
   <div class="crumb">Pokémon › Pokédex e locais</div>
-  <h1>Pokédex e locais</h1>
+  <h1 tabindex="-1">Pokédex e locais</h1>
   <p class="lede">As duas Pokédex podem ser completadas: <strong>151 de Kanto</strong> e <strong>202 de Hoenn</strong>, nas duas rotas e sem trocas.</p>
   <div class="prose">
   <p>Além dos Pokémon de sempre do FireRed, mais de 50 espécies de Hoenn foram espalhadas por Kanto desde a v1.7. A tabela abaixo mostra as espécies que não existiam no FireRed (ou que só existiam no LeafGreen) e onde encontrá-las. As evoluções saem por nível, pedra ou <a href="#itens">Pedra de Elo</a>.</p>
   </div>
-  <p><label for="dexq" class="tag k" style="margin-right:8px">Filtro</label><input id="dexq" class="filter" type="search" placeholder="Digite um Pokémon ou um lugar…" autocomplete="off"></p>
+  <p class="filtro"><label for="dexq">Filtrar a tabela</label><input id="dexq" class="filter" type="search" placeholder="Digite um Pokémon ou um lugar…" autocomplete="off"></p>
   <div class="tblwrap"><table id="dextbl">
-    <thead><tr><th>Pokémon</th><th>Pokédex</th><th>Onde achar</th><th>Como</th></tr></thead>
+    <thead><tr><th scope="col">Pokémon</th><th scope="col">Pokédex</th><th scope="col">Onde achar</th><th scope="col">Como</th></tr></thead>
     <tbody><tr><td><strong>Bulbasaur</strong></td><td><span class="tag k">Kanto</span></td><td>Zona Safari (leste)</td><td>Grama</td></tr>
 <tr><td><strong>Charmander</strong></td><td><span class="tag k">Kanto</span></td><td>Zona Safari (norte)</td><td>Grama</td></tr>
 <tr><td><strong>Squirtle</strong></td><td><span class="tag k">Kanto</span></td><td>Zona Safari (oeste)</td><td>Surf</td></tr>
@@ -538,10 +588,10 @@ footer p{margin:.3rem 0}
 <tr><td><strong>Omanyte e Kabuto</strong></td><td><span class="tag k">Kanto</span> <span class="tag h">Hoenn</span></td><td>Mt. Moon: o Miguel dá o segundo fóssil</td><td>Fóssil</td></tr>
 <tr><td><strong>Lileep e Anorith</strong></td><td><span class="tag h">Hoenn</span></td><td>Caverna Diglett: Fóssil Raiz e Fóssil Garra</td><td>Fóssil</td></tr></tbody>
   </table></div>
-  <p id="dexnone" class="note" hidden>Nenhum Pokémon com esse nome ou lugar na tabela. Os Pokémon que já existiam no FireRed continuam nos lugares de sempre.</p>
+  <p id="dexnone" class="note" role="status" hidden>Nenhum Pokémon com esse nome ou lugar na tabela. Os Pokémon que já existiam no FireRed continuam nos lugares de sempre.</p>
   <h2>Pokémon de Hoenn espalhados por Kanto</h2>
   <div class="tblwrap"><table>
-    <thead><tr><th>Lugar</th><th>Pokémon de Hoenn</th></tr></thead>
+    <thead><tr><th scope="col">Lugar</th><th scope="col">Pokémon de Hoenn</th></tr></thead>
     <tbody>
       <tr><td>Rota 1 e Rota 22</td><td>Taillow, Zigzagoon (e Marill/Azumarill na água da Rota 22)</td></tr>
       <tr><td>Rota 2</td><td>Taillow, Zigzagoon, Ralts (raro)</td></tr>
@@ -569,12 +619,12 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= LENDÁRIOS -->
 <article class="page" data-page="lendarios" data-title="Lendários" data-k="lendarios groudon kyogre rayquaza regirock regice registeel latias latios mew jirachi deoxys articuno zapdos moltres mewtwo" hidden>
   <div class="crumb">Pokémon › Lendários</div>
-  <h1>Lendários</h1>
+  <h1 tabindex="-1">Lendários</h1>
   <p class="lede">13 lendários para capturar. Os lendários novos aparecem <strong>depois que você vira Campeão</strong>.</p>
   <div class="note"><strong>Nenhum lendário se perde.</strong> Se você derrotar ou fugir de um lendário, ele foge e volta quando você sai do lugar e entra de novo. Ele só some de vez depois de capturado.</div>
   <h2>Disponíveis durante a história</h2>
   <div class="tblwrap"><table>
-    <thead><tr><th>Lendário</th><th>Nível</th><th>Onde</th></tr></thead>
+    <thead><tr><th scope="col">Lendário</th><th scope="col">Nível</th><th scope="col">Onde</th></tr></thead>
     <tbody>
       <tr><td>Rayquaza</td><td class="num">70</td><td>Topo do Pilar do Céu, depois da cena final. Para voltar ao pilar, fale com o Steven (ou com o Proton, na Rota Rocket) em Viridian, ao lado do Centro Pokémon.</td></tr>
       <tr><td>Zapdos</td><td class="num">50</td><td>Usina Elétrica</td></tr>
@@ -585,7 +635,7 @@ footer p{margin:.3rem 0}
   </table></div>
   <h2>Depois da Liga</h2>
   <div class="tblwrap"><table>
-    <thead><tr><th>Lendário</th><th>Nível</th><th>Onde</th><th>Como encontrar</th></tr></thead>
+    <thead><tr><th scope="col">Lendário</th><th scope="col">Nível</th><th scope="col">Onde</th><th scope="col">Como encontrar</th></tr></thead>
     <tbody>
       <tr><td>Groudon</td><td class="num">70</td><td>Mt. Ember</td><td>No lugar onde ele surgiu na história.</td></tr>
       <tr><td>Kyogre</td><td class="num">70</td><td>Ilhas Seafoam B4F</td><td>Surfe no lago da direita.</td></tr>
@@ -614,11 +664,11 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= FÓSSEIS -->
 <article class="page" data-page="fosseis" data-title="Fósseis" data-k="fosseis fossil helice domo ambar raiz garra omanyte kabuto aerodactyl lileep anorith cinnabar miguel" hidden>
   <div class="crumb">Pokémon › Fósseis</div>
-  <h1>Fósseis</h1>
+  <h1 tabindex="-1">Fósseis</h1>
   <p class="lede">Os cinco fósseis podem ser revividos no mesmo jogo.</p>
   <figure class="float"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPAAAACgCAIAAAC9uXYyAAAV8klEQVR42u1dIXjiQNOe3lPBOepA5nfBEdfIfC7niLvI1IErrpGpC65xh8w5cIf7IlMHjrgvElxxV3e/WFiWzSYkobQJzPv06RM2m82w+2aYmZ3sAiAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIHjdPT0/YCwiK5+fnehP6379/OIqIPSFubmot/zccQsQlAQmNQEIjEFXF7Wz2G3vhaqHrPy+N0Jf3lRA5cZG67DaKpji0VwhZ7qENjbgExPF7HL9frA2NA1wD22C6ElvAvTZ2DhK6fjx+fOoLK4yePWQ2Ero2VE7jMQWtQJhdgtaX5xduczlMU+FO+P5ceEGyZjZytsNVq688RZFs2baDyeRFqInTCE2r5eE0MaDTolt1n/q+WflWf9KQ5SZ3Ioo2E1taRxFbKKyZjZztRNHGM94z7lIjeRzHySmMbdscoYluDucR4TShsrkSR6L8do+jdR5OE0JLUkN4ttMx6m1ytGQZIB501tyJftQAgJYsc70RtX8Uu0PkC9vh7tiPGkydGstTINqwXictDd2yZuOxqsiGMVAV2VxNW71HgEd4DbjK69WCEH30vOf041M/p56+WBv6dTYDkBMDkzo2itwqdIN5IC5PUuF1Ntsd11ieU+xmwkv5qT969vZs1vRtjUNOt9rd9WpB9Ddyek/o1XIJIDODRyELL7jvSMUIlFKeuKO8Wi7pcX3l+SiYq2mr3c1fmeX0VUc5/HcDAJjBOzJgWjGFCF5KeeKOMpEk5Wxt5CkH2w4czxU9Z4FQPR+NfhjGwHG0ayS0Z7z3Jw128A4MtUOnB6BR7jbJdpJ3ZJ2wa5MnqXEFnD5+CWronVOY/4Jg/TE3pnShpGGdsPrK84FYrxYZVgcxoBFipxAALFOnpWN/du4bZzthVy4PdfjI/yStk2xm6wSv0fUSmjiFaYMUx7EkSfQ/gFzOZk22k+2E1VceEMXj8mAVx3Jr91A9uTD4TzFl/OSiet47hWkaiB0tSZJgDs9Bmd/fZDvZTlh95YmiTTTP68BF0ebg4/pdbm2t8NbLf9cMp7Pht3uhMeDmF6+U0MQpzNBAh/9LuvbJdrKdsOuRp/EesEoaQGI5Dc/Do+p5ab5AEJC5mMnkhdobbMuHUC/fKeRcIjqK7nw/QkOlvGWWbCfbCau7PONxmHZrTZN22r0NAK9hCACGBp4L/WGf4zQ8uS0AIa1b7S4xM1oA2r1M5mIMY9Af9j3XM7TwNUWE5aoJAJKkXCahj84U9r0XAPD6A/JxHpUMK3DtlJ6Zq7g8FLrzMrMHuvMCADN7wFg7bQCI421q6CRQk8Y0gAQAPK0zTJf1O5kzpyXJZve2lAwXjOMzhcmhKhkXO2yn9MxcXeQhJGapDACWxfNMkXxJkojFQpT0jtPA0zqFykx9AADP9dg2iaHPHi9X+iUTeqsV0mfC0jTQHoHP/KCaOTVi0gk70FL1lydNQwsxCVRVsZyhZfeHhNMAEIdBFMWxLGW6lbEsS432vo7jubOxPAkiQwuvN8qRNhMmGCqWLmQwGOfaMAY520nekS2psTzpGjqpnimbqTPXkHXP9SinCWVzjmU4jxqyDgBdTWs3x5NAVaT46gg9scUKwHDENmKyPksawdnc7WSjLvLsb63sTQVjnvpS6jw2J5MXEqAg9oNuu54z5AKFR8wn1yMXBpMAALR72XBVQwsngalI/nUReuqmBeQNoQZKZC+AZ2SdpekNXDvp94Vay5NG4jT1fGDEtBqmAisAkqhk94cAoCpytlYO5xGpH654xU8emHm8j9bN40t3CoU/pmZjQkNRq+Wy3emslkuADgCEf/6UGPhkO9m/4/WVhwkmNHc2w0YYy7OsbcoyMTaC10i7l/WebtozdaARjQsAm9k4nIsDlKoikzp7wZS9E0kUf9obPelR6otwCukPHDd9QEdrN2Yln+6MdoT3vTB5qHqm1kWGcc+7fS3zLsX0iADuWW9iEviOzj4hAGAYpsiVjF5D5yIJ/Y2O1tifjf1Z0m4jDj7r5uue3d69CZfnOK2djPvWWp6sXwdjkOGqEhvad3TnpbD6dF62bCaNHMUkUIV/l6Oh82MRzgodnxtVkycDlqWOxyH5T80G4tIBM/XtO7ppz5TvcVO37pXGa4pPea80iE3i/JUom2lM2nM9w0jN8U+LVU8vg9BU9+RJjFwxb/DnOc5A2n1rLU9W++OQM6Y1XSO+Hcdpe6BRv5AzlPeRQWcIAI7n6jsFz86wZHuTF+sUsmP2JRKk3bfu8nCZdGkaWvB8xnEcxpKqwWG4Q2BmMG9tzaYzdnrlanFLHfbPxxfe+tzycJmcnjdK09BpINOEumVxxBXo6fFYlpHKmWG7DBStf23tbEl2uMQWSUiicbpUZyAIAKCraSxZSUlbkpKKnNTPbiENyfj07tirNaFvXEecFZ4R+yx0g2trpyiI37aKV+xqSUTjkknv7BsRsWl9spIBWaSmLWU9P8ul2Kmo/bZu8/lSZP9FsmhCCcvPVO44HmulzKYzltCO58ZhoPf02XRG/0frd7s/ZAmt93TmORnYdr+EPKZZ86XA0Or6cnBsDl6jZMCbY/NsOiNeI+uzNtqSdi9TI94wBjRsZ1pmTmHkbrci3RItFkjo+iGYHSwxk/bCNsdmoqEFrb1GlNOO587GY1mWTcuU2qqmWXXqlmBcjtNI6C9GOI+62vYVFRJFth81AHDcCQAYP+ytW6lq0fqd/Z80pkneafAaEQ9yFcfhPCJxbk2zVvGsRt0iS+14VcrkkCRxxAfLTy9XU6Jp4UGKc7AIAtA0SmVN3Sc5Tf44ABCHR/JISYyccpo8GCTikSZnxRGVozNq6POBsFkYblNlieV0V9MWQTC0B0+Pe7M4CJeE3EG4/GH8+DP5kxFsYUM0NJbX1TRhhETtyd12t4I9tlgtwumpsSMk9BnRFmnHtiSxnCZqdTr17u9bHJXJR2/4QzHGafOUwmgjiUN7rpc8q/bknlbRDd0kWQKYnsjp2ziOheEb8Q8BlucrN3Utm+iE0/bIIzbudCqgMgAYqjQJ46dH7Xnkpc0YaLrGhuFIyj/heltqc+NbTd3MihfCaYRG2/d85as4FpocpLAtSaZpvL39tfrW0B6E4zEAqJZFqcxdaPWtOI4dx+Ny9icTH5iJEnr27e8qnEQAl5nIjybH12AV53pN9Wk3WR04tmY7mtqZhDFRz1RzU9jDgylANjO2qx64j6a1ubYOR0Kfx0lfr+VWK4PlQvOaqGffNE3f57xDBBK66p5i8PpK8w6Cv0vVssJwBbuN1e7vW5TKr6/rt7e/2HVI6IoaIW/w/Q7+vr39pR6b9r1jP/UIlf/38ggApu8Hjr2KYlZb71qI0hsv4FE9PDw8PvZluYuERhzB29vfu7vvcqtlqu2uJI3CldZ+BwB7unB6XQDwwwONO5z8cYwff//7AgCrw5Vlkuq5LR0E49arOO0UHIsYjEZektMPDw/kgJyiH2khe1XVnopbyxoKd5Ucj/OuUxHHxZbnuZL6hNMAbQAgbO5KktxadSVp6IdhYj2k4eSPYVov+tbh803TeZ4+B8G5jQ2O04Sg7CnykRxzV41GlUuevgUAbufTeL0e9h2MT59Yriid//66H9ixH65MtQ0Aizg21fbQD/1ZQLqXa2c2+z2An7B7P8B1X/RGix2ItPt+LKcBgBz/+vWLq1l9+yTV5MC48inld3ff//3vJwC8OGAMY3u6AAAS91i9H1zLtdOV18+j4N+/f8Q7dN0XRekcKungrJymejfbkKCGR9WUNNrQ50JHDZahBgCbzbrVkgAgWseSJMP7W/5GVFU76vkFwf4NxVbZ92SpOUE4nWZeo1N4vXhxpI4arJg0z2azRfiddomu/3Rc/3l0k632WC/w2CkpP5spd6m9ke3wsSZ1dfANmXemKMd/Hl5fHInQd6A2B2pzs1nHcZTHyes14l4jy/U8qonzq2qOzQ8PD1GUK61elrsV1N+pGtp1BWufCRdKQ2RGOeD+XvfDOTl4fc3Ksvf98c3NTRgu/0/tEKdQVTvCB4DVxJqmFtLiGWymxjF7lobtqG1ddZNDuK8elzDQaG5fJ84fzkMQLt7dfW+1pO/fG3G+WY8/9oCkdgyHg7PG7JJsZm1o4ceksVE1ft8CgHBfPc7zkIr/tmB8mlPVlOIZ9dMql5Anj82Qpzzbrqia1bE1OUImA0ZVOyCYc8rqVoxDZ5f7/oTkK3O9J6w/ny9JfnOyq0l9d4zrJB0jtDXYL/BKFHZRDY1x6M8pH491oZYR1iflqnbqIrnEjOYmvStNaGp16It51FUyNPTnIOmSDoc2qp8vAZ0Mr0Vk+pazN0JoQLj8EBv6FETRhq69Eq/X45cXpPhXgU6AJ2fCK0poVe0k+BR+rYZOgk04IRRHqp1PH3OZdFz+HSQy8mrgFH6ths4AXdjTdR2Mi58DR/Pv2My7qtkhtyyPN3pzaW8TA75QQwvndCh0/We8Xofh0nEcEhfPrs8CH4DSSFK2msb0wUxhc7ahx+fT0NnxVMsa+mM5/9udpD6Z9zlil78ObMdLTgxdW7z8KDgdXC/cwm5B+SgKqQGdoaHTQq1njU8fxfvGi6MIACQS7k05BoyjF+E0a4TUhtBDS/x8L8KD8je42/3QiNcV/qg469F8X25x/C1NoyibyvFuaDGeXcLAYC3mqhM6zrcqXvPTJ6e4DBP6UVY0zoslrD2qoePzvO5xqeCUdF0So29z77UYfrJkbIZJFG24hJMo2rCMz6+hEaW9QCHXK5eclLYXNEsdUoceVAQsxVFDf6Bi5o6TJcmMvIpGOdKgqp2w2uv3VEpD5w8jnhslwpTJV2WFZytrgeQidJ599b4W1dHQljUkk/bvm6/0n642f/023yCpYbgUbo2apTXPFk8lPxfsY3YODX2i/IUWMfr4J7wL14njhJblJqHOzpL+pDg097OQ/JUwtcgP5KIa+tPi0BVJhvnwaZeqE1poZpXY3y5nHJTal3Q940TSXEAfpGxXtZwNXVSe0nH0EzX0eNK0jE3py1FDf5K3NLhbN639WhObceC6jjARNJkDeEjo8HQbupA8RXGKhnbc1eBu/TJpcW92no7FaiFVeGPwxWpRG0JT9mzG+3Bb09IGOTg0HoeWpSaPT7GhT5EnD4pqaKm7TYi1bXtwt249/hqMHhwXyunpNA0dTiOAKW4a9AG+v6e+c+whGpFwyLKGnD+eYUMn7emiGrqEPJ+joSmbAYBw+sP1dDiNTtzHBE2OwjC1Yj1ewZnC4hp6y2YAWI8eWE6b1sYt+IPBaeh67bp5gYSWlePqLWI24avgTGFRDW3btmPE62C7hgHLaQ8e+k7DH5c3ymfhRGqrNeJlvAqrTuh+2PAgSNqsm3HQDxsCHVNE45bQ0EXlKRoIK6Shhw546vs6+N7S/nKcXo8eiDyFGmQ1tD/2TcssTZGvQsnN6z8qBHs0vtu/i/uhRDjE2qz9sNG/i703KY5jWj+Pxi2noamcheQp0TkFNXTUDxtCTlN5yhnlRCRZUkkjxHMQfl/b7kdRZJpGvU0OXS+8zkP+ctjFa8dj17KGhEMQsqpi25uMBxYAgOkrAIq8+gN/SHZrEwCiuQIAvgkAYFqRM5Rp7nTROHR+eT4tDi3LzX644ThN2ebaJTU0mTewbdlxvHz9jzZ0PlAOceWpvRn4zm4lg9nst67/NIwBaGYcRbYL/vjAJk5qaP9PkzwG5JGIInCGp8lzThvaH4NpRRynDeeOsO0U65mx0fuE02f6vlfqFHpvJaP62xdVAt8OeDYDgOOuWPqSY2swkHabBRrG4GPl+fAoh2vD0NlQTlM2D/v9VVw4zyktDn2+71sR3AjXt0wzIUxnCgjE52I2KpAEm1dDm85UViTT0rB/EZ8MWQmjeZyT1sc1NKGy0sUVLxFfifkizkPr26OKmdXK3bum3Gpg5yI+DdH6ffG2AQClS7Sqn83pG7rd9EErUSTLsu0vKJuRyogq0BoA/HGQwelUk4Nl80+5hX2K+HL8jtZHOS3eBQvZjKggKBVNS9Mf/QKElhUJ2YyoMqcpRY8T2nSmJKbRvWtiDyKqBkJLpSsJlfS3DPWc5gU+7JBzh8aiOF/LHy4nK6pQ7Lp8lxqB0lKopL8VVc9k+WvyNxp51zxa3CpYFVkU6xoeoQwlfWtZw8P3qzu5nhK5i6qi0H5+iM/BLRxuX/Jj+JtT7Ot3AICMGDS7E0faHhzkFN1bVzj29BJhCV2FO6ORpCRcC2mcS94oedXRXUWEXz95i/xiZPeS8AsSydkuquxmKEXB8lBuNRZv6YQ+2go5yD+vktyVgz3Ic4mw5GgjaYYBuzNI2mPA3eiUXUWOfpf8YuTpWG4xRVbUPPetEZvz8LBM+mieTcyTQyLcWfqoJSNcefsco3L01kXX+i63KcnROpwYaT9Z9LhGi+9/mMlRzhnK7inhcqvliMj9fJ9PxyTthKPfqApiZO+KWdl1b6tCaG6xa86uHY28X79+Jc3QQs0mdU9ONZOUpMRVQtsjzbAu+l0yeiPP902KIaxJ2ykk9mXgptfr0z1biVNIJr3JlAy1XVi/kEaFZLkbRQvyn/3I1qHlRzUEF2zims2pZjhJuP9pl3M34ix14TfiLhQeJ79L9lfgxMgQVdis8Eb5u64WNjTlIcnrSCZ13PR6fdfbr2IycIOjhL54sPEKRL0IfQuHezsgoHr7hiAK29DMjhMd7BTUzbUntDUYUJMDOwVRe0JX1uq4mIkuxOcR+nCHq06l2HwZE12ITyU0u1b+IshFMpZY3ESAcJJZWCejhL0cSYz4VKcwT6qGMHSQUVIiZwOBAHamUFU7G725GG5OiQmcmKrBlRBOE+2O/EYUIzQANGeb892JnfslrE2WpJH7fDlJiAskNNmyZLuvlHSudd7zmBwZCQ/IZkQuQg+tg/VVneCA0K3G8QT/csaJsESYGpYzxwhxwcjPw9s4XglPROt38tLKJ6dwZLyHguN65ZxmyZlK6MmhSoYcazKmZTCyif/J9NE8JQjEibh5enriit47P8iL38JVZs79RnFSE+dJPUVcFUiq3XwRj0w1K8qxJdA8JoSmVsfXOmdIZQRnDFOiJs8KFprpNpbzRQwAdL1HBKI6ILScL8RrRYvXtqPcp+s9IhDVMTbS1HMqobuNpb/bjhI5jagamzOW08UFzxH1sJtzLnj+LaMVx+xSPb142/yO1hnxPwTiTFT+Ha1zsvmIhibHtr/ATYMQX46P2TSI6GkAsMcB0hpRZSrnJTRHa+xfxCfjLBtvEphKg5oinImi63qyvOhm9xdQTg4UpdPrSYYi7sbJHKbTeD5fsqZdmsl3pvK08VKUer/2f/v5t6SjfsH15/OlonRIZgxL68kcALZsRtV7FkJHkXiP9aLlwmH+qMZrV26axr0L02Hc60mExBTTaXzvgqJ0fH/yhaIWGq8a4f8BABziTj+LWB0AAAAASUVORK5CYII=" alt="Doutor de Cinnabar entregando o Lileep" width="240" height="160"><figcaption>O Lileep revivido em Cinnabar.</figcaption></figure>
   <div class="tblwrap" style="max-width:640px"><table>
-    <thead><tr><th>Fóssil</th><th>Pokémon</th><th>Onde achar</th></tr></thead>
+    <thead><tr><th scope="col">Fóssil</th><th scope="col">Pokémon</th><th scope="col">Onde achar</th></tr></thead>
     <tbody>
       <tr><td>Fóssil Hélice</td><td>Omanyte</td><td rowspan="2">Mt. Moon B2F. Depois de escolher um, fale de novo com o Miguel e ele dá o outro.</td></tr>
       <tr><td>Fóssil Domo</td><td>Kabuto</td></tr>
@@ -641,12 +691,12 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= EVOLUÇÕES -->
 <article class="page" data-page="evolucoes" data-title="Evoluções especiais" data-k="evolucao evolucoes troca pedra de elo eevee espeon umbreon feebas milotic steelix scizor kingdra politoed slowking porygon2 huntail gorebyss alakazam machamp golem gengar" hidden>
   <div class="crumb">Pokémon › Evoluções especiais</div>
-  <h1>Evoluções especiais</h1>
+  <h1 tabindex="-1">Evoluções especiais</h1>
   <p class="lede">Todas as espécies chegam à evolução final jogando sozinho. As evoluções que dependiam de troca, relógio ou concurso foram adaptadas.</p>
   <h2>Por troca → Pedra de Elo</h2>
   <p class="prose">Use a <strong>Pedra de Elo</strong> no Pokémon, como se fosse uma pedra de evolução.</p>
   <div class="tblwrap"><table>
-    <thead><tr><th>Pokémon</th><th>Evolui para</th><th>Precisa segurar</th></tr></thead>
+    <thead><tr><th scope="col">Pokémon</th><th scope="col">Evolui para</th><th scope="col">Precisa segurar</th></tr></thead>
     <tbody>
       <tr><td>Kadabra</td><td>Alakazam</td><td>—</td></tr>
       <tr><td>Machoke</td><td>Machamp</td><td>—</td></tr>
@@ -665,7 +715,7 @@ footer p{margin:.3rem 0}
   <p class="prose">O item segurado é gasto na evolução.</p>
   <h2>Outras mudanças</h2>
   <div class="tblwrap"><table>
-    <thead><tr><th>Pokémon</th><th>Evolui para</th><th>Como</th></tr></thead>
+    <thead><tr><th scope="col">Pokémon</th><th scope="col">Evolui para</th><th scope="col">Como</th></tr></thead>
     <tbody>
       <tr><td>Eevee</td><td>Espeon</td><td>Pedra Solar</td></tr>
       <tr><td>Eevee</td><td>Umbreon</td><td>Pedra Lunar</td></tr>
@@ -679,10 +729,10 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= GINÁSIOS -->
 <article class="page" data-page="ginasios" data-title="Ginásios e Liga" data-k="ginasios lideres insignias brock misty surge erika koga sabrina blaine norman elite four lorelei bruno agatha lance campeao steven blue" hidden>
   <div class="crumb">Referência › Ginásios e Liga</div>
-  <h1>Ginásios e Liga</h1>
+  <h1 tabindex="-1">Ginásios e Liga</h1>
   <p class="lede">Cada líder e cada membro da Elite Four ganhou um Pokémon de Hoenn. Em Viridian, o líder agora é o Norman.</p>
   <div class="tblwrap"><table>
-    <thead><tr><th>Ginásio</th><th>Líder</th><th>Pokémon de Hoenn</th></tr></thead>
+    <thead><tr><th scope="col">Ginásio</th><th scope="col">Líder</th><th scope="col">Pokémon de Hoenn</th></tr></thead>
     <tbody>
       <tr><td>Pewter</td><td>Brock</td><td>Nosepass</td></tr>
       <tr><td>Cerulean</td><td>Misty</td><td>Corphish</td></tr>
@@ -697,7 +747,7 @@ footer p{margin:.3rem 0}
   <h2>Norman, líder de Viridian</h2>
   <p class="prose">Tipo Normal. Entrega a <strong>Insígnia Terra</strong> e o <strong>TM26 (EARTHQUAKE)</strong>.</p>
   <div class="tblwrap" style="max-width:420px"><table>
-    <thead><tr><th>Pokémon</th><th>Nível</th></tr></thead>
+    <thead><tr><th scope="col">Pokémon</th><th scope="col">Nível</th></tr></thead>
     <tbody>
       <tr><td>Spinda</td><td class="num">44</td></tr>
       <tr><td>Linoone</td><td class="num">45</td></tr>
@@ -709,7 +759,7 @@ footer p{margin:.3rem 0}
   </table></div>
   <h2>Liga Pokémon</h2>
   <div class="tblwrap"><table>
-    <thead><tr><th>Treinador</th><th>Pokémon de Hoenn</th></tr></thead>
+    <thead><tr><th scope="col">Treinador</th><th scope="col">Pokémon de Hoenn</th></tr></thead>
     <tbody>
       <tr><td>Lorelei</td><td>Walrein</td></tr>
       <tr><td>Bruno</td><td>Hariyama</td></tr>
@@ -724,7 +774,7 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= ITENS -->
 <article class="page" data-page="itens" data-title="Itens e lojas" data-k="itens pedra de elo link stone loja celadon pedra solar lunar capa metalica exp all" hidden>
   <div class="crumb">Referência › Itens e lojas</div>
-  <h1>Itens e lojas</h1>
+  <h1 tabindex="-1">Itens e lojas</h1>
   <div class="prose">
   <h2>Pedra de Elo</h2>
   <p>Item novo do Chama Esmeralda. Imita a energia de uma troca e evolui os Pokémon que só evoluíam trocados. Veja a lista em <a href="#evolucoes">Evoluções especiais</a>.</p>
@@ -746,7 +796,7 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= SISTEMAS -->
 <article class="page" data-page="sistemas" data-title="Sistemas do jogo" data-k="sistemas missao roubo anticheat cheat trapaca preconceito chefe roupa exp all" hidden>
   <div class="crumb">Referência › Sistemas do jogo</div>
-  <h1>Sistemas do jogo</h1>
+  <h1 tabindex="-1">Sistemas do jogo</h1>
   <div class="prose">
   <h2>Menu MISSÃO</h2>
   <p>Opção nova no menu START. Mostra o seu objetivo atual em toda a história, nas duas rotas, até depois da Liga.</p>
@@ -775,8 +825,8 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= NOVIDADES -->
 <article class="page" data-page="novidades" data-title="Histórico de versões" data-k="versoes changelog novidades atualizacao historico v1.11 v1.10 v1.9 v1.8 v1.7" hidden>
   <div class="crumb">Comunidade › Histórico de versões</div>
-  <h1>Histórico de versões</h1>
-  <div class="ver cur"><h3>v1.11 <small>Pokédex completa</small></h3><ul>
+  <h1 tabindex="-1">Histórico de versões</h1>
+  <div class="ver cur"><h2>v1.11 <small>Pokédex completa</small></h2><ul>
     <li>Pokédex de Kanto (151) e de Hoenn (202) completáveis.</li>
     <li>Mais de 60 espécies novas na natureza, incluindo os iniciais clássicos.</li>
     <li>Segundo fóssil do Mt. Moon, Fóssil Raiz e Fóssil Garra, e laboratório de Cinnabar revivendo todos.</li>
@@ -784,44 +834,44 @@ footer p{margin:.3rem 0}
     <li>Lendários derrotados voltam. Volta ao Pilar do Céu pelo Steven ou pelo Proton.</li>
     <li>Pesquisador no laboratório do Carvalho com dicas.</li>
   </ul></div>
-  <div class="ver"><h3>v1.10 <small>Nova introdução</small></h3><ul>
+  <div class="ver"><h2>v1.10 <small>Nova introdução</small></h2><ul>
     <li>Aviso de fan game, as duas histórias e o aviso sobre cheats na introdução.</li>
   </ul></div>
-  <div class="ver"><h3>v1.9 <small>Proteção contra cheats</small></h3><ul>
+  <div class="ver"><h2>v1.9 <small>Proteção contra cheats</small></h2><ul>
     <li>A opção da escolha agora é "AJUDAR PROTON (ENTRA PRA ROCKET)".</li>
     <li>Sprite do Blue corrigido.</li>
     <li>Proteção contra cheats de itens, dinheiro e fichas.</li>
   </ul></div>
-  <div class="ver"><h3>v1.8 <small>Norman, líder de Viridian</small></h3><ul>
+  <div class="ver"><h2>v1.8 <small>Norman, líder de Viridian</small></h2><ul>
     <li>O Norman é o líder do Ginásio de Viridian, e o Giovanni aparece depois da batalha.</li>
   </ul></div>
-  <div class="ver"><h3>v1.7 <small>Pokémon de Hoenn em Kanto</small></h3><ul>
+  <div class="ver"><h2>v1.7 <small>Pokémon de Hoenn em Kanto</small></h2><ul>
     <li>Mais de 50 espécies de Hoenn na natureza e cerca de 180 treinadores com Pokémon de Hoenn.</li>
   </ul></div>
-  <div class="ver"><h3>v1.6 <small>Revisão geral</small></h3><ul>
+  <div class="ver"><h2>v1.6 <small>Revisão geral</small></h2><ul>
     <li>Textos cortados corrigidos e Easy Chat traduzido para PT-BR.</li>
   </ul></div>
-  <div class="ver"><h3>v1.5 <small>Visual do Chefe</small></h3><ul>
+  <div class="ver"><h2>v1.5 <small>Visual do Chefe</small></h2><ul>
     <li>Cabelo e rosto do Chefe (menino) redesenhados.</li>
   </ul></div>
-  <div class="ver"><h3>v1.4 <small>Pedra de Elo</small></h3><ul>
+  <div class="ver"><h2>v1.4 <small>Pedra de Elo</small></h2><ul>
     <li>Pedra de Elo, evoluções finais todas alcançáveis e itens novos na loja de Celadon.</li>
   </ul></div>
-  <div class="ver"><h3>v1.3 <small>Roupa de Chefe e título novo</small></h3><ul>
+  <div class="ver"><h2>v1.3 <small>Roupa de Chefe e título novo</small></h2><ul>
     <li>Evoluções sem trava da Pokédex Nacional.</li>
     <li>Roupa de Chefe da Rocket e mãe do protagonista negra.</li>
     <li>Tela de título com Tyranitar e chamas verdes.</li>
   </ul></div>
-  <div class="ver"><h3>v1.2 <small>Visual novo</small></h3><ul>
+  <div class="ver"><h2>v1.2 <small>Visual novo</small></h2><ul>
     <li>Protagonistas negros de cabelo preto e Blue com visual novo.</li>
   </ul></div>
-  <div class="ver"><h3>v1.1 <small>Coerência da Rota Rocket</small></h3><ul>
+  <div class="ver"><h2>v1.1 <small>Coerência da Rota Rocket</small></h2><ul>
     <li>O mundo reage ao seu uniforme. Itens da Rocket e recrutas com visuais variados.</li>
   </ul></div>
-  <div class="ver"><h3>v1.0 <small>História completa</small></h3><ul>
+  <div class="ver"><h2>v1.0 <small>História completa</small></h2><ul>
     <li>Do prólogo à Liga, nas duas rotas, com os finais Lealdade e Redenção.</li>
   </ul></div>
-  <div class="ver"><h3>v0.1 a v0.3 <small>Primeiros testes</small></h3><ul>
+  <div class="ver"><h2>v0.1 a v0.3 <small>Primeiros testes</small></h2><ul>
     <li>Tradução PT-BR, Rota Rocket, menu MISSÃO e EXP. ALL.</li>
   </ul></div>
 </article>
@@ -829,11 +879,11 @@ footer p{margin:.3rem 0}
 <!-- ======================================================= BUGS -->
 <article class="page" data-page="bugs" data-title="Reportar bugs" data-k="bugs erro problema reportar beta travou" hidden>
   <div class="crumb">Comunidade › Reportar bugs</div>
-  <h1>Reportar bugs</h1>
-  <p class="lede">O Chama Esmeralda está em beta. Cada relato ajuda a deixar o jogo mais perto dos 100%.</p>
+  <h1 tabindex="-1">Reportar bugs</h1>
+  <p class="lede">O Chama Esmeralda está em beta. Cada relato ajuda a corrigir o jogo.</p>
   <div class="prose">
   <h2>O que mandar</h2>
-  <p>Poste no canal <strong>#bugs</strong> do <a href="https://discord.gg/AczKuCQSFj" target="_blank" rel="noopener">servidor no Discord</a> com:</p>
+  <p>Poste no canal <strong>#bugs</strong> do <a href="https://discord.gg/AczKuCQSFj" target="_blank" rel="noopener">servidor no Discord<span class="sr"> (abre em outra aba)</span></a> com:</p>
   <ol class="steps">
     <li>A <strong>versão</strong> do jogo (por exemplo, v1.11).</li>
     <li>A <strong>rota</strong>: Herói (Treinador) ou Vilão (Rocket).</li>
@@ -847,13 +897,14 @@ Lugar:
 O que aconteceu:
 Print ou vídeo: </pre>
   <div class="note warn">Bugs causados por cheats não contam como erro do jogo. Antes de reportar, confira se você não usou nenhum código.</div>
+  <p>O Discord é um serviço de outra empresa. O que você manda lá segue as regras e a política de privacidade do Discord. Não mande dados pessoais (como e-mail, telefone ou endereço) nos relatos.</p>
   </div>
 </article>
 
 <!-- ======================================================= REGRAS -->
 <article class="page" data-page="regras" data-title="Regras da comunidade" data-k="regras discord comunidade servidor spoiler rom pirataria" hidden>
   <div class="crumb">Comunidade › Regras</div>
-  <h1>Regras da comunidade</h1>
+  <h1 tabindex="-1">Regras da comunidade</h1>
   <div class="prose">
   <ol class="steps">
     <li><strong>Respeito acima de tudo.</strong> Sem ofensas, preconceito, assédio ou provocações.</li>
@@ -868,78 +919,291 @@ Print ou vídeo: </pre>
     <li><strong>A moderação tem a palavra final.</strong></li>
   </ol>
   <p>Punições: aviso, depois silenciamento temporário, depois expulsão ou banimento. Infrações graves levam a banimento direto.</p>
-  <p><a href="https://discord.gg/AczKuCQSFj" target="_blank" rel="noopener">Entrar no servidor do Discord</a></p>
+  <p><a href="https://discord.gg/AczKuCQSFj" target="_blank" rel="noopener">Entrar no servidor do Discord<span class="sr"> (abre em outra aba)</span></a></p>
   </div>
 </article>
+
+<!-- ======================================================= PRIVACIDADE -->
+<article class="page" data-page="privacidade" data-title="Política de Privacidade" data-k="privacidade lgpd dados pessoais direitos titular controlador" hidden>
+  <div class="crumb">Informações legais › Política de Privacidade</div>
+  <h1 tabindex="-1">Política de Privacidade</h1>
+  <p class="atualizado">Atualizada em 25 de novembro de 2026.</p>
+  <div class="prose">
+  <p>Esta política explica quais dados a Wiki do Chama Esmeralda trata, para quê, com quem eles são compartilhados, por quanto tempo ficam guardados e como você exerce os seus direitos, de acordo com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018, a LGPD).</p>
+  <h2>Quem é o responsável</h2>
+  <p>O responsável (controlador) é o <strong>Grupo Zart</strong>. Para qualquer assunto de privacidade, escreva para <a href="mailto:projetozart@gmail.com">projetozart@gmail.com</a>.</p>
+  <h2>Quais dados tratamos e para quê</h2>
+  <p>A wiki é só de leitura: não tem cadastro, login, comentários, formulários, anúncios nem compras. Por isso, ela não pede nenhum dado seu.</p>
+  </div>
+  <div class="tblwrap"><table>
+    <thead><tr><th scope="col">Dado</th><th scope="col">Onde fica</th><th scope="col">Para quê</th><th scope="col">Base legal (LGPD)</th></tr></thead>
+    <tbody>
+      <tr><td>Sua escolha no aviso de cookies</td><td>Só no seu navegador</td><td>Não mostrar o aviso de novo</td><td>Legítimo interesse, só para o site funcionar (art. 7º, IX)</td></tr>
+      <tr><td>A última página da wiki que você abriu (só se você aceitar)</td><td>Só no seu navegador</td><td>Mostrar o atalho "Continuar de onde parei"</td><td>Consentimento (art. 7º, I)</td></tr>
+      <tr><td>Dados técnicos de acesso, como o endereço IP</td><td>Servidores do GitHub Pages, que hospeda a wiki</td><td>Entregar a página e proteger o servidor</td><td>Legítimo interesse (art. 7º, IX)</td></tr>
+    </tbody>
+  </table></div>
+  <div class="prose">
+  <p>O que fica no seu navegador não é enviado para nós. A wiki não usa Google Analytics, pixels nem outras ferramentas de rastreamento, não baixa fontes nem imagens de outros sites e não vende nenhum dado.</p>
+  <h2>Com quem os dados são compartilhados</h2>
+  <ul>
+    <li><strong>GitHub Pages</strong> (GitHub, Inc.): hospeda a wiki. Como todo servidor, registra dados técnicos de acesso. Os servidores ficam fora do Brasil, e o GitHub segue as próprias regras de proteção de dados nessa transferência internacional (art. 33 da LGPD).</li>
+    <li><strong>Discord e Linktree</strong>: só se você clicar nos links para eles. A partir daí, valem as regras e a política de privacidade de cada um.</li>
+  </ul>
+  <p>Fora isso, só compartilhamos dados se uma lei ou uma ordem judicial exigir.</p>
+  <h2>Por quanto tempo os dados ficam guardados</h2>
+  <ul>
+    <li>Dados no seu navegador: até você apagar em <a href="#meus-dados">Meus dados</a> ou limpar os dados do site no navegador.</li>
+    <li>Registros técnicos de acesso: pelo tempo definido pelo GitHub.</li>
+    <li>E-mails que você mandar para nós: até 12 meses depois da resposta.</li>
+  </ul>
+  <h2 id="seus-direitos">Seus direitos</h2>
+  <p>Pela LGPD (art. 18), você pode: confirmar se tratamos seus dados; ter acesso a eles; corrigir dados incompletos ou errados; pedir anonimização, bloqueio ou eliminação; levar seus dados para outro serviço (portabilidade); saber com quem eles são compartilhados; e retirar o seu consentimento a qualquer momento.</p>
+  <ul>
+    <li><strong>Ver e apagar o que fica no seu navegador:</strong> em <a href="#meus-dados">Meus dados</a>.</li>
+    <li><strong>Retirar o consentimento:</strong> mude a sua escolha em <a href="#cookies">Cookies</a>.</li>
+    <li><strong>Qualquer outro pedido</strong> (acesso, correção ou exclusão): escreva para <a href="mailto:projetozart@gmail.com">projetozart@gmail.com</a>. Respondemos em até 15 dias.</li>
+  </ul>
+  <p>Se achar que seus direitos não foram respeitados, você também pode reclamar na Autoridade Nacional de Proteção de Dados (ANPD), em gov.br/anpd.</p>
+  <h2>Crianças e adolescentes</h2>
+  <p>A wiki não coleta dados de ninguém, inclusive de menores. Se um responsável tiver alguma dúvida, pode escrever para <a href="mailto:projetozart@gmail.com">projetozart@gmail.com</a>.</p>
+  <h2>Segurança</h2>
+  <p>A conexão com a wiki é criptografada (HTTPS). Se acontecer um incidente que possa trazer risco a você, avisaremos você e a ANPD, como manda a lei.</p>
+  <h2>Mudanças nesta política</h2>
+  <p>Se esta política mudar, a data no começo da página muda junto.</p>
+  </div>
+</article>
+
+<!-- ======================================================= TERMOS -->
+<article class="page" data-page="termos" data-title="Termos de Uso" data-k="termos uso regras marcas direitos autorais nintendo imagens creditos" hidden>
+  <div class="crumb">Informações legais › Termos de Uso</div>
+  <h1 tabindex="-1">Termos de Uso</h1>
+  <p class="atualizado">Atualizados em 25 de novembro de 2026.</p>
+  <div class="prose">
+  <p>Estes termos são as regras para usar a Wiki do Chama Esmeralda. Ao usar o site, você concorda com eles e com a <a href="#privacidade">Política de Privacidade</a>.</p>
+  <h2>1. O que é a wiki</h2>
+  <p>A wiki é um guia gratuito sobre o Pokémon Chama Esmeralda, uma ROM hack feita por fã. Ela é mantida pelo Grupo Zart, sem fins lucrativos. As informações valem para a versão indicada no rodapé e podem mudar quando o jogo for atualizado.</p>
+  <h2>2. Não é um produto oficial</h2>
+  <p>O Chama Esmeralda e esta wiki são feitos por fã. Eles não são oficiais e não têm ligação com a Nintendo, a Creatures, a GAME FREAK ou a The Pokémon Company. Pokémon e todos os nomes, personagens e imagens relacionados pertencem aos seus donos e são citados aqui só para identificar o jogo.</p>
+  <h2>3. O que não fazemos</h2>
+  <ul>
+    <li>Não distribuímos ROMs de jogos comerciais. O Chama Esmeralda é só um patch (.bps), aplicado na cópia do jogo que a própria pessoa tem.</li>
+    <li>Não vendemos o jogo nem nada relacionado a ele.</li>
+  </ul>
+  <h2>4. Uso permitido</h2>
+  <p>Você pode ler, compartilhar o link e usar as informações para jogar. Não é permitido:</p>
+  <ul>
+    <li>copiar a wiki e apresentá-la como sua ou se passar pelo Grupo Zart;</li>
+    <li>cobrar de outras pessoas pelo acesso à wiki ou ao jogo;</li>
+    <li>tentar atrapalhar o funcionamento do site.</li>
+  </ul>
+  <h2>5. Imagens, ícones e fontes</h2>
+  <ul>
+    <li><strong>Prints do jogo:</strong> capturas de tela do Chama Esmeralda feitas pelo próprio projeto. Os gráficos de Pokémon que aparecem nelas pertencem à Nintendo, à Creatures e à GAME FREAK.</li>
+    <li><strong>Ícones em pixel art</strong> da página principal: feitos para esta wiki.</li>
+    <li><strong>Logo ZART e ícone da coroa:</strong> do Grupo Zart.</li>
+    <li><strong>Fontes:</strong> as do próprio sistema do seu aparelho. Nenhuma fonte é baixada de outro site.</li>
+  </ul>
+  <h2>6. Links para outros sites</h2>
+  <p>A wiki tem links para o Discord e o Linktree. Esses sites têm regras próprias e não são controlados por nós. Nenhum link da wiki é de afiliado: não recebemos nada quando você clica.</p>
+  <h2>7. Responsabilidade</h2>
+  <p>A wiki é oferecida como está. Fazemos o possível para as informações estarem certas, mas pode haver erros. Se encontrar algum, avise em <a href="mailto:projetozart@gmail.com">projetozart@gmail.com</a> ou na página <a href="#bugs">Reportar bugs</a>. Nada nestes termos tira os direitos que o Código de Defesa do Consumidor garante a você.</p>
+  <h2>8. Pedidos de remoção</h2>
+  <p>Se você tem direitos sobre algum conteúdo da wiki e quer que ele seja retirado, escreva para <a href="mailto:projetozart@gmail.com">projetozart@gmail.com</a>.</p>
+  <h2>9. Mudanças</h2>
+  <p>Estes termos podem mudar. A data no começo da página mostra a versão.</p>
+  <h2>10. Lei e foro</h2>
+  <p>Valem as leis do Brasil. Qualquer disputa pode ser levada ao foro do seu domicílio, como garante o Código de Defesa do Consumidor. Antes disso, fale com a gente em <a href="mailto:projetozart@gmail.com">projetozart@gmail.com</a>.</p>
+  </div>
+</article>
+
+<!-- ======================================================= COOKIES -->
+<article class="page" data-page="cookies" data-title="Cookies e armazenamento" data-k="cookies armazenamento local consentimento aceitar recusar rastreamento analytics" hidden>
+  <div class="crumb">Informações legais › Cookies</div>
+  <h1 tabindex="-1">Cookies e armazenamento</h1>
+  <p class="atualizado">Atualizada em 25 de novembro de 2026.</p>
+  <div class="prose">
+  <p>A wiki não usa cookies de anúncio, de estatística nem de rastreamento. Ela guarda poucas informações no seu navegador (armazenamento local), e essas informações nunca são enviadas para nós.</p>
+  </div>
+  <div class="tblwrap"><table>
+    <thead><tr><th scope="col">Nome</th><th scope="col">Tipo</th><th scope="col">Para quê</th><th scope="col">Duração</th></tr></thead>
+    <tbody>
+      <tr><td><code>ce_cookies</code></td><td>Essencial</td><td>Lembrar a sua escolha neste aviso</td><td>Até você apagar</td></tr>
+      <tr><td><code>ce_ultima</code></td><td>Preferência (só se você aceitar)</td><td>Lembrar a última página aberta, para o atalho "Continuar de onde parei"</td><td>Até você apagar ou recusar</td></tr>
+    </tbody>
+  </table></div>
+  <div class="prose">
+  <h2>Estatísticas e rastreamento</h2>
+  <p>Hoje a wiki não tem Google Analytics, pixels nem nada parecido. Se um dia tiver, essas ferramentas só vão carregar depois que você aceitar, e esta página será atualizada antes.</p>
+  <h2>Sua escolha agora</h2>
+  <p id="ckAgora" role="status"></p>
+  <div class="botoes"><button type="button" class="botao" data-ck="aceito">Aceitar</button><button type="button" class="botao botao--sec" data-ck="recusado">Recusar</button></div>
+  <p>Você também pode apagar tudo em <a href="#meus-dados">Meus dados</a> ou limpando os dados do site nas configurações do navegador.</p>
+  </div>
+</article>
+
+<!-- ======================================================= REEMBOLSO -->
+<article class="page" data-page="reembolso" data-title="Política de Reembolso" data-k="reembolso cancelamento arrependimento 7 dias cdc compra pago" hidden>
+  <div class="crumb">Informações legais › Política de Reembolso</div>
+  <h1 tabindex="-1">Política de Reembolso</h1>
+  <p class="atualizado">Atualizada em 25 de novembro de 2026.</p>
+  <div class="prose">
+  <p><strong>A wiki e o Chama Esmeralda são gratuitos.</strong> Não vendemos nada: não há assinatura, plano pago, doação obrigatória nem cobrança de nenhum tipo. Por isso, hoje não existe o que cancelar ou reembolsar.</p>
+  <h2>Se alguém cobrar</h2>
+  <p>Ninguém está autorizado a cobrar pelo Chama Esmeralda ou pela wiki em nome do Grupo Zart. Se alguém te vendeu o jogo, peça o seu dinheiro de volta para quem vendeu e avise em <a href="mailto:projetozart@gmail.com">projetozart@gmail.com</a>.</p>
+  <h2>Se um dia houver algo pago</h2>
+  <p>Se o Grupo Zart passar a vender alguma coisa aqui, estas regras vão valer:</p>
+  <ul>
+    <li><strong>Direito de arrependimento:</strong> você poderá desistir da compra em até 7 dias, contados da compra ou do recebimento, sem precisar dar motivo, como garante o art. 49 do Código de Defesa do Consumidor.</li>
+    <li><strong>Reembolso integral:</strong> o valor pago volta inteiro, pelo mesmo meio de pagamento, sem custo para você.</li>
+    <li><strong>Como pedir:</strong> por e-mail, em <a href="mailto:projetozart@gmail.com">projetozart@gmail.com</a>, com o e-mail usado na compra.</li>
+    <li>Antes de qualquer cobrança, esta página será atualizada com o preço, o que está incluído e os dados de quem vende.</li>
+  </ul>
+  </div>
+</article>
+
+<!-- ======================================================= MEUS DADOS -->
+<article class="page" data-page="meus-dados" data-title="Meus dados" data-k="meus dados apagar excluir acessar lgpd navegador" hidden>
+  <div class="crumb">Informações legais › Meus dados</div>
+  <h1 tabindex="-1">Meus dados</h1>
+  <div class="prose">
+  <p>Aqui você vê e apaga o que a wiki guardou no seu navegador, sem precisar pedir a ninguém. Veja também a <a href="#privacidade">Política de Privacidade</a>.</p>
+  <h2>O que está guardado neste navegador</h2>
+  <ul id="mdLista" aria-live="polite"></ul>
+  <h2>Apagar</h2>
+  <p>Apaga a sua escolha de cookies e a última página aberta. Depois disso, o aviso de cookies aparece de novo.</p>
+  <div class="botoes"><button type="button" class="botao botao--perigo" id="mdApagar">Apagar os dados deste navegador</button></div>
+  <p id="mdMsg" role="status"></p>
+  <h2>Outros pedidos</h2>
+  <p>A wiki não guarda nenhum dado seu nos nossos sistemas. Para pedir acesso, correção ou exclusão de qualquer outro dado (por exemplo, um e-mail que você mandou para nós), escreva para <a href="mailto:projetozart@gmail.com">projetozart@gmail.com</a>.</p>
+  </div>
+</article>
+
 
   </main>
 </div>
 
-<footer>
-  <p>Pokémon Chama Esmeralda é uma ROM hack feita por fã, gratuita e sem fins lucrativos. Pokémon e todos os nomes relacionados pertencem à Nintendo, à Creatures e à GAME FREAK. Esta wiki não tem relação oficial com elas.</p>
-  <p>Wiki atualizada para a versão v1.11 (beta). Criado por <strong>wasmorf</strong>: <a href="https://linktr.ee/wasmorf" target="_blank" rel="noopener">linktr.ee/wasmorf</a> · <a href="https://discord.gg/AczKuCQSFj" target="_blank" rel="noopener">Discord</a></p>
+<footer class="rodape">
+  <div class="rodape-in">
+    <div>
+      <img src="assets/img/zart-logo.png" alt="ZART" width="70" height="34">
+      <p><strong>Um projeto do grupo Zart.</strong></p>
+      <p>Grupo Zart é um grupo de projetos digitais independentes: sites, jogos e ferramentas criados com cuidado e com identidade própria.</p>
+      <p>Responsável: Grupo Zart · Contato: <a href="mailto:projetozart@gmail.com">projetozart@gmail.com</a></p>
+    </div>
+    <div>
+      <h2>Informações legais</h2>
+      <ul>
+        <li><a href="#privacidade">Política de Privacidade</a></li>
+        <li><a href="#termos">Termos de Uso</a></li>
+        <li><a href="#cookies">Cookies</a></li>
+        <li><a href="#reembolso">Política de Reembolso</a></li>
+        <li><a href="#meus-dados">Meus dados (LGPD)</a></li>
+        <li><button type="button" class="linkbtn" id="abrirCookies">Mudar minha escolha de cookies</button></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Comunidade</h2>
+      <ul>
+        <li><a class="ext" href="https://discord.gg/AczKuCQSFj" target="_blank" rel="noopener">Discord<span class="sr"> (abre em outra aba)</span></a></li>
+        <li><a class="ext" href="https://linktr.ee/wasmorf" target="_blank" rel="noopener">Linktree do wasmorf<span class="sr"> (abre em outra aba)</span></a></li>
+        <li><a href="#bugs">Reportar bugs</a></li>
+      </ul>
+    </div>
+    <div class="base">
+      <p>Pokémon Chama Esmeralda é uma ROM hack feita por fã, gratuita e sem fins lucrativos. Não é um produto oficial e não tem ligação com a Nintendo, a Creatures, a GAME FREAK ou a The Pokémon Company. Pokémon e todos os nomes, personagens e imagens relacionados pertencem aos seus donos. Os prints são do próprio jogo. Não distribuímos ROMs.</p>
+      <p>Wiki atualizada para a versão v1.11 (beta). Nenhum link desta wiki é de afiliado.</p>
+    </div>
+  </div>
 </footer>
 
 <script>
 (function(){
+  "use strict";
   var pages=[].slice.call(document.querySelectorAll('.page'));
   var links=[].slice.call(document.querySelectorAll('.side a, .topnav a'));
-  function show(id){
-    var found=pages.some(function(p){return p.dataset.page===id});
-    if(!found) id='inicio';
+  var main=document.getElementById('main');
+  var CK='ce_cookies', ULT='ce_ultima';
+  var LEGAIS={privacidade:1,termos:1,cookies:1,reembolso:1,'meus-dados':1};
+  function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function lsDel(k){try{localStorage.removeItem(k)}catch(e){}}
+  function escolha(){var v=lsGet(CK);try{return v?JSON.parse(v).v:''}catch(e){return ''}}
+  function existe(id){return pages.some(function(p){return p.dataset.page===id})}
+
+  // ---------- páginas ----------
+  var atual='';
+  function show(id,foco){
+    if(!existe(id)) id='inicio';
+    atual=id;
     pages.forEach(function(p){p.hidden=p.dataset.page!==id});
     links.forEach(function(a){ if(a.getAttribute('href')==='#'+id) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
     var t=pages.filter(function(p){return p.dataset.page===id})[0];
-    document.title=(id==='inicio'?'':t.dataset.title+' · ')+'Chama Esmeralda Wiki';
+    document.title=(id==='inicio'?'':t.dataset.title+' · ')+'Chama Esmeralda Wiki | Zart Jogos';
+    if(foco){var h=t.querySelector('h1'); if(h) h.focus({preventScroll:true});}
+    if(escolha()==='aceito' && id!=='inicio' && !LEGAIS[id]) lsSet(ULT,id);
+    if(id==='cookies') atualizarCk();
+    if(id==='meus-dados') listarDados();
+    continuar();
   }
-  function route(scroll){
-    var id=(location.hash||'#inicio').slice(1);
-    show(id);
-    if(scroll) window.scrollTo(0,0);
-  }
-  window.addEventListener('hashchange',function(){route(true)});
-  route(false);
-  // Navegação por clique: funciona mesmo quando o visualizador bloqueia a troca do #
   function go(id){
-    show(id); window.scrollTo(0,0);
-    try{ if(location.hash!=='#'+id) history.replaceState(null,'','#'+id); }catch(e){}
+    show(id,true); window.scrollTo(0,0);
+    try{ if(location.hash!=='#'+id) history.pushState(null,'','#'+id); }catch(e){}
   }
+  window.addEventListener('hashchange',function(){var id=location.hash.slice(1); if(id==='main'){main.focus();return} show(id||'inicio',true); window.scrollTo(0,0)});
+  window.addEventListener('popstate',function(){show((location.hash||'#inicio').slice(1),true)});
   document.addEventListener('click',function(e){
     var a=e.target.closest('a[href^="#"]'); if(!a) return;
-    var id=a.getAttribute('href').slice(1); if(!id) {e.preventDefault(); return;}
-    if(!pages.some(function(p){return p.dataset.page===id})) return;
+    var id=a.getAttribute('href').slice(1);
+    if(id==='main'){e.preventDefault(); main.focus(); return}
+    if(!id){e.preventDefault(); return}
+    if(!existe(id)) return;
     e.preventDefault(); go(id);
-    if(a.closest('.results')){ q.value=''; res.hidden=true; }
+    if(a.closest('.results')){ q.value=''; fecharRes(); }
   });
 
-  // busca
-  var q=document.getElementById('q'), res=document.getElementById('res'), sel=-1;
+  // "Continuar de onde parei" (só com consentimento)
+  function continuar(){
+    var box=document.getElementById('continuar'), u=lsGet(ULT);
+    if(atual==='inicio' && escolha()==='aceito' && u && existe(u) && u!=='inicio'){
+      var t=pages.filter(function(p){return p.dataset.page===u})[0].dataset.title;
+      box.innerHTML='Continuar de onde parei: <a href="#'+u+'"></a>';
+      box.querySelector('a').textContent=t;
+      box.hidden=false;
+    } else box.hidden=true;
+  }
+
+  // ---------- busca ----------
+  var q=document.getElementById('q'), res=document.getElementById('res'), st=document.getElementById('qstatus'), sel=-1;
   function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
   var index=pages.map(function(p){return {id:p.dataset.page,t:p.dataset.title,nt:norm(p.dataset.title),kw:norm(p.dataset.k),k:norm(p.dataset.title+' '+p.dataset.k+' '+p.textContent)}});
   function score(e,words){var sc=0;words.forEach(function(w){if(e.nt.indexOf(w)>=0)sc+=100;if(e.kw.indexOf(w)>=0)sc+=20;sc+=Math.min(10,e.k.split(w).length-1)});return sc}
+  function fecharRes(){res.hidden=true;sel=-1}
   function render(){
     var v=norm(q.value.trim()); res.innerHTML=''; sel=-1;
-    if(!v){res.hidden=true;return}
+    if(!v){fecharRes();st.textContent='';return}
     var words=v.split(/\s+/);
     var hits=index.filter(function(e){return words.every(function(w){return e.k.indexOf(w)>=0})})
       .sort(function(a,b){return score(b,words)-score(a,words)}).slice(0,8);
-    if(!hits.length){res.innerHTML='<li><a href="#" tabindex="-1">Nada encontrado<small>Tente outra palavra, como "Kyogre" ou "Pedra de Elo".</small></a></li>';res.hidden=false;return}
+    if(!hits.length){res.innerHTML='<li><a href="#" tabindex="-1">Nada encontrado<small>Tente outra palavra, como "Kyogre" ou "Pedra de Elo".</small></a></li>';res.hidden=false;st.textContent='Nenhum resultado.';return}
     hits.forEach(function(h){var li=document.createElement('li');var a=document.createElement('a');a.href='#'+h.id;a.textContent=h.t;li.appendChild(a);res.appendChild(li)});
     res.hidden=false;
+    st.textContent=hits.length+(hits.length===1?' resultado.':' resultados.');
   }
   q.addEventListener('input',render);
   q.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){fecharRes();return}
     var items=res.querySelectorAll('a'); if(res.hidden||!items.length) return;
     if(e.key==='ArrowDown'){sel=Math.min(items.length-1,sel+1);e.preventDefault()}
     else if(e.key==='ArrowUp'){sel=Math.max(0,sel-1);e.preventDefault()}
-    else if(e.key==='Enter'){var a=items[Math.max(0,sel)]; var h=a.getAttribute('href'); if(h!=='#'){go(h.slice(1));} q.value='';res.hidden=true;return}
-    else if(e.key==='Escape'){res.hidden=true;return}
+    else if(e.key==='Enter'){e.preventDefault();var a=items[Math.max(0,sel)]; var h=a.getAttribute('href'); if(h!=='#'){go(h.slice(1));} q.value='';fecharRes();return}
     [].forEach.call(items,function(a,i){a.classList.toggle('sel',i===sel)});
+    if(sel>=0) st.textContent=items[sel].textContent;
   });
-  res.addEventListener('click',function(e){var a=e.target.closest('a'); if(!a) return; if(a.getAttribute('href')==='#'){e.preventDefault();return} q.value='';res.hidden=true});
-  document.addEventListener('click',function(e){if(!e.target.closest('.search')) res.hidden=true});
+  res.addEventListener('keydown',function(e){if(e.key==='Escape'){fecharRes();q.focus()}});
+  document.addEventListener('click',function(e){if(!e.target.closest('.search')) fecharRes()});
 
-  // filtro da Pokédex
+  // ---------- filtro da Pokédex ----------
   var dq=document.getElementById('dexq'), rows=[].slice.call(document.querySelectorAll('#dextbl tbody tr')), none=document.getElementById('dexnone');
   dq.addEventListener('input',function(){
     var v=norm(dq.value.trim()), n=0;
@@ -947,7 +1211,7 @@ Print ou vídeo: </pre>
     none.hidden=n>0;
   });
 
-  // copiar modelo de bug
+  // ---------- copiar modelo de bug ----------
   document.getElementById('copybug').addEventListener('click',function(){
     var b=this, txt=document.getElementById('bugtpl').textContent;
     function done(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar modelo'},1600)}
@@ -955,13 +1219,64 @@ Print ou vídeo: </pre>
     try{navigator.clipboard.writeText(txt).then(done,fallback)}catch(e){fallback()}
   });
 
-  // tema
-  var root=document.documentElement, KEY='ce-wiki-theme';
-  try{var saved=localStorage.getItem(KEY); if(saved) root.setAttribute('data-theme',saved)}catch(e){}
-  document.getElementById('theme').addEventListener('click',function(){
-    var cur=root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
-    var nx=cur==='dark'?'light':'dark'; root.setAttribute('data-theme',nx);
-    try{localStorage.setItem(KEY,nx)}catch(e){}
+  // ---------- cookies (LGPD) ----------
+  function textoCk(){
+    var v=escolha();
+    return v==='aceito'?'Você aceitou: a wiki lembra a última página aberta neste navegador.'
+      : v==='recusado'?'Você recusou: a wiki guarda só a sua escolha neste aviso.'
+      : 'Você ainda não escolheu. Até escolher, a wiki não guarda nada além do necessário.';
+  }
+  function atualizarCk(){var p=document.getElementById('ckAgora'); if(p) p.textContent=textoCk();}
+  function escolher(v){
+    lsSet(CK,JSON.stringify({v:v,data:new Date().toISOString()}));
+    if(v!=='aceito') lsDel(ULT); else if(atual && atual!=='inicio' && !LEGAIS[atual]) lsSet(ULT,atual);
+    var av=document.getElementById('avisoCookies');
+    if(av){var volta=av._volta; av.remove(); if(volta && document.contains(volta)) volta.focus();}
+    atualizarCk(); listarDados(); continuar();
+  }
+  function aviso(focar){
+    var velho=document.getElementById('avisoCookies'); if(velho) velho.remove();
+    var d=document.createElement('section');
+    d.id='avisoCookies'; d.className='aviso-cookies';
+    d.setAttribute('aria-labelledby','ckTit');
+    d.innerHTML='<h2 id="ckTit">Sua privacidade</h2><p>Esta wiki não usa cookies de rastreamento nem de anúncios. Se você aceitar, ela lembra neste navegador a última página que você abriu. Veja a <a href="#cookies">página de cookies</a> e a <a href="#privacidade">Política de Privacidade</a>.</p><div class="botoes"><button type="button" class="botao" data-ck="aceito">Aceitar</button><button type="button" class="botao botao--sec" data-ck="recusado">Recusar</button></div>';
+    d._volta=focar?document.activeElement:null;
+    // entra logo depois do link "Pular", para quem usa Tab encontrar cedo
+    document.body.insertBefore(d,document.body.children[1]||null);
+    if(focar) d.querySelector('button').focus();
+  }
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-ck]'); if(b) escolher(b.dataset.ck);});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && document.getElementById('avisoCookies') && document.activeElement && document.activeElement.closest('#avisoCookies')){
+      // Esc fecha o aviso sem decidir: ele volta na próxima visita
+      var av=document.getElementById('avisoCookies'), volta=av._volta; av.remove(); if(volta && document.contains(volta)) volta.focus(); else main.focus();
+    }
   });
+  document.getElementById('abrirCookies').addEventListener('click',function(){aviso(true)});
+
+  // ---------- Meus dados ----------
+  function listarDados(){
+    var ul=document.getElementById('mdLista'); if(!ul) return;
+    var itens=[], v=escolha(), u=lsGet(ULT);
+    if(v) itens.push('Sua escolha de cookies: '+(v==='aceito'?'aceitou':'recusou')+'.');
+    if(u && existe(u)) itens.push('Última página aberta: '+pages.filter(function(p){return p.dataset.page===u})[0].dataset.title+'.');
+    ul.innerHTML='';
+    if(!itens.length) itens.push('Nada. A wiki não guardou nenhum dado neste navegador.');
+    itens.forEach(function(t){var li=document.createElement('li');li.textContent=t;ul.appendChild(li)});
+  }
+  document.getElementById('mdApagar').addEventListener('click',function(){
+    lsDel(CK); lsDel(ULT);
+    try{Object.keys(localStorage).filter(function(k){return k.indexOf('ce_')===0||k==='ce-wiki-theme'}).forEach(function(k){localStorage.removeItem(k)})}catch(e){}
+    listarDados(); continuar();
+    document.getElementById('mdMsg').textContent='Pronto: os dados deste navegador foram apagados.';
+    aviso(false);
+  });
+
+  // ---------- início ----------
+  lsDel('ce-wiki-theme'); // preferência da versão antiga, que não é mais usada
+  show((location.hash||'#inicio').slice(1),false);
+  if(!escolha()) aviso(false);
 })();
 </script>
+</body>
+</html>
